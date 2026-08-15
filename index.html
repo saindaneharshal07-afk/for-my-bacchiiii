@@ -1,63 +1,167 @@
-    
-<!DOCTYPE html>
-<html lang="en">
+ <!DOCTYPE html>
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>For My Cutie Bacchiiii 🧸✨</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
-        body { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%); min-height: 100vh; overflow-x: hidden; color: #333; }
         
-        /* Floating Background Elements */
+        /* Romantic Purple Gradient Theme */
+        body { 
+            background: linear-gradient(135deg, #1f0826 0%, #4a124d 50%, #68185c 100%); 
+            min-height: 100vh; 
+            overflow-x: hidden; 
+            color: #fff; 
+        }
+        
+        /* Floating Stars & Hearts Background */
         .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .star { position: absolute; background: #fff; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); animation: floatStar 3s infinite ease-in-out alternate; }
-        @keyframes floatStar { 0% { opacity: 0.3; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.2); } }
+        .star { 
+            position: absolute; 
+            background: #e8a7ff; 
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); 
+            animation: floatStar 3s infinite ease-in-out alternate; 
+        }
+        @keyframes floatStar { 
+            0% { opacity: 0.2; transform: scale(0.7) translateY(0px); } 
+            100% { opacity: 0.9; transform: scale(1.3) translateY(-10px); } 
+        }
 
-        /* Slide Container */
-        .container { max-width: 500px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 15px 80px 15px; position: relative; z-index: 2; }
-        .slide { display: none; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 2px solid rgba(255,255,255,0.6); text-align: center; }
-        .slide.active { display: block; animation: fadeIn 0.5s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Container & Glassmorphism Card Slide */
+        .container { 
+            max-width: 480px; 
+            margin: 0 auto; 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            padding: 20px 15px 90px 15px; 
+            position: relative; 
+            z-index: 2; 
+        }
+        
+        .slide { 
+            display: none; 
+            background: rgba(45, 12, 56, 0.75); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 24px; 
+            padding: 22px 18px; 
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(232, 167, 255, 0.2); 
+            border: 1.5px solid rgba(232, 167, 255, 0.3); 
+            text-align: center; 
+        }
+        .slide.active { display: block; animation: slideIn 0.5s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(15px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 
-        /* Teddy Section */
-        .teddy-box { margin-bottom: 15px; position: relative; }
-        .speech-bubble { background: #fff; border: 2px solid #ff4b72; padding: 10px 15px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; color: #ff4b72; display: inline-block; margin-top: 5px; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        /* Interactive Animated Bear Box */
+        .teddy-box { margin-bottom: 12px; position: relative; cursor: pointer; }
+        .bear-avatar { 
+            font-size: 65px; 
+            display: inline-block; 
+            animation: floatBear 2.5s infinite ease-in-out; 
+            transition: transform 0.3s ease;
+            user-select: none;
+        }
+        .bear-avatar:active { transform: scale(1.3) rotate(10deg); }
+        @keyframes floatBear { 
+            0%, 100% { transform: translateY(0) rotate(0deg); } 
+            50% { transform: translateY(-8px) rotate(-4deg); } 
+        }
 
-        /* Slide 1 Styles */
-        .welcome-title { color: #d63384; font-size: 1.6rem; font-weight: bold; margin: 15px 0; }
+        .speech-bubble { 
+            background: linear-gradient(135deg, #d870f5, #9c27b0); 
+            border: 2px solid #ffb3ff; 
+            padding: 10px 14px; 
+            border-radius: 18px; 
+            font-size: 0.88rem; 
+            font-weight: 600; 
+            color: #ffffff; 
+            display: inline-block; 
+            margin-bottom: 8px; 
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); 
+            line-height: 1.4;
+        }
+
+        .welcome-title { color: #f3bfff; font-size: 1.6rem; font-weight: bold; margin: 12px 0; text-shadow: 0 0 10px rgba(243, 191, 255, 0.5); }
+        
         .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
-        .btn { padding: 10px 25px; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 1rem; }
-        .btn-open { background: #28a745; color: white; }
-        .btn-close { background: #dc3545; color: white; }
+        .btn { padding: 12px 28px; border: none; border-radius: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .btn-open { background: linear-gradient(135deg, #11998e, #38ef7d); color: white; }
+        .btn-close { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; }
 
-        /* Slide 2: Timeline */
-        .timeline { text-align: left; margin-top: 15px; }
-        .timeline-item { background: #fff; padding: 12px; border-left: 4px solid #ff4b72; margin-bottom: 10px; border-radius: 0 10px 10px 0; font-size: 0.85rem; }
-        .timeline-item h4 { color: #d63384; margin-bottom: 4px; }
+        /* Slide 2: Timeline with Full Messages */
+        .timeline { text-align: left; margin-top: 15px; max-height: 380px; overflow-y: auto; padding-right: 5px; }
+        .timeline::-webkit-scrollbar { width: 5px; }
+        .timeline::-webkit-scrollbar-thumb { background: #d870f5; border-radius: 10px; }
+        
+        .timeline-item { 
+            background: rgba(255, 255, 255, 0.08); 
+            padding: 14px; 
+            border-left: 4px solid #d870f5; 
+            margin-bottom: 12px; 
+            border-radius: 0 14px 14px 0; 
+            font-size: 0.88rem; 
+            line-height: 1.5;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+        .timeline-item h4 { color: #f3bfff; margin-bottom: 6px; font-size: 0.98rem; }
+        .timeline-item p { color: #e0d0e8; }
 
-        /* Slide 3: Memories Slider & Flip */
-        .card-container { perspective: 1000px; width: 100%; height: 320px; margin: 15px 0; position: relative; }
-        .card { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.6s; border-radius: 15px; cursor: pointer; display: none; }
+        /* Slide 3: Memories Slider & 3D Flip */
+        .card-container { perspective: 1000px; width: 100%; height: 330px; margin: 15px 0; position: relative; }
+        .card { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); border-radius: 18px; cursor: pointer; display: none; }
         .card.active-card { display: block; }
         .card.flipped { transform: rotateY(180deg); }
-        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        
+        .card-front, .card-back { 
+            position: absolute; width: 100%; height: 100%; 
+            backface-visibility: hidden; 
+            border-radius: 18px; overflow: hidden; 
+            border: 2px solid rgba(243, 191, 255, 0.5); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
+        }
         .card-front img { width: 100%; height: 100%; object-fit: cover; }
-        .card-back { background: #fff; color: #d63384; transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; padding: 15px; font-size: 0.9rem; text-align: center; font-weight: bold; }
-        .slider-controls { display: flex; justify-content: space-between; align-items: center; }
-        .slide-btn { background: #ff4b72; color: white; border: none; padding: 5px 15px; border-radius: 15px; cursor: pointer; }
+        
+        .card-back { 
+            background: linear-gradient(135deg, #4a124d, #2d0c38); 
+            color: #f3bfff; 
+            transform: rotateY(180deg); 
+            display: flex; align-items: center; justify-content: center; 
+            padding: 20px; font-size: 0.95rem; text-align: center; 
+            font-weight: 500; line-height: 1.6;
+            box-shadow: inset 0 0 20px rgba(216, 112, 245, 0.3);
+        }
+        
+        .slider-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+        .slide-btn { background: #d870f5; color: white; border: none; padding: 8px 18px; border-radius: 20px; cursor: pointer; font-weight: bold; }
 
-        /* Slide 4: Emotional Text */
-        .story-box { background: #fff; padding: 15px; border-radius: 15px; font-size: 0.85rem; line-height: 1.5; color: #444; max-height: 350px; overflow-y: auto; text-align: left; }
+        /* Slide 4: Full Romantic Uncut Letter */
+        .story-box { 
+            background: rgba(255, 255, 255, 0.07); 
+            padding: 16px; 
+            border-radius: 16px; 
+            font-size: 0.88rem; 
+            line-height: 1.6; 
+            color: #f3d9ff; 
+            max-height: 360px; 
+            overflow-y: auto; 
+            text-align: left; 
+            border: 1px solid rgba(216, 112, 245, 0.2);
+        }
+        .story-box::-webkit-scrollbar { width: 5px; }
+        .story-box::-webkit-scrollbar-thumb { background: #d870f5; border-radius: 10px; }
+        .story-box p { margin-bottom: 10px; }
 
-        /* Slide 5: Proposal */
-        .proposal-chars { font-size: 2.5rem; margin: 10px 0; }
-        .btn-yes { background: #ff4b72; color: white; font-size: 1.1rem; padding: 12px 30px; }
-        .btn-no { background: #6c757d; color: white; position: absolute; }
+        /* Slide 5: Proposal & Dodging Button */
+        .proposal-chars { font-size: 3rem; margin: 10px 0; }
+        .btn-yes { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; font-size: 1.1rem; padding: 12px 32px; }
+        .btn-no { background: #6c757d; color: white; position: absolute; transition: 0.2s ease; }
 
         /* Navigation Controls */
-        .nav-controls { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 10; }
-        .nav-btn { background: #fff; border: 2px solid #ff4b72; color: #ff4b72; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .nav-controls { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 10; }
+        .nav-btn { background: rgba(31, 8, 38, 0.9); border: 2px solid #d870f5; color: #f3bfff; padding: 10px 24px; border-radius: 25px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
@@ -67,117 +171,128 @@
     <div class="container">
         <!-- SLIDE 1 -->
         <div class="slide active" id="slide1">
-            <div class="teddy-box">
-                <div class="speech-bubble" id="teddyText1">Hi! Welcome! 💖 Whatever you do, don't tap the 'Close' button even by mistake! 😜</div>
-                <div><span style="font-size: 70px;" id="teddyIcon1">🧸</span></div>
+            <div class="teddy-box" onclick="reactBear(1)">
+                <div class="speech-bubble" id="teddyText1">Hi! Welcome 💖 (Bear par tap karo reaction ke liye! 🧸) Don't tap 'CLOSE' even by mistake! 😉</div>
+                <div><span class="bear-avatar" id="teddyIcon1">🧸</span></div>
             </div>
             <div class="welcome-title">For My Cutie Bacchiiii 🧸✨</div>
-            <p style="font-size: 0.9rem; color: #666;">Photo par tap karke secret message dekho</p>
+            <p style="font-size: 0.88rem; color: #d8b3e6;">Aage jaane ke liye OPEN dabayein! ✨</p>
             <div class="btn-group">
                 <button class="btn btn-open" onclick="nextSlide()">OPEN 🟢</button>
                 <button class="btn btn-close" onclick="triggerAngryTeddy()">CLOSE 🔴</button>
             </div>
         </div>
 
-        <!-- SLIDE 2 -->
+        <!-- SLIDE 2: TIMELINE (EXACT DETAILED TEXTS) -->
         <div class="slide" id="slide2">
-            <div class="teddy-box">
-                <div class="speech-bubble">Look how far we've come! Walk through our sweet timeline below! 🚶‍♂️✨</div>
-                <div><span style="font-size: 60px;">🧸</span></div>
+            <div class="teddy-box" onclick="reactBear(2)">
+                <div class="speech-bubble" id="teddyText2">Hamaari pyaari journey dekho! Scroll karke pura padho ✨</div>
+                <div><span class="bear-avatar" id="teddyIcon2">🧸</span></div>
             </div>
-            <h3 style="color: #d63384;">Hamaari Pyari Journey ⏳</h3>
+            <h3 style="color: #f3bfff; margin-bottom: 8px;">Hamaari Pyari Journey ⏳</h3>
             <div class="timeline">
                 <div class="timeline-item">
-                    <h4>Hamaari Pehli Mulaqat 🏫</h4>
-                    <p>Pata nahi hum pehli baar kab mile the... college admission time dekha tha!</p>
+                    <h4>1. Hamaari Pehli Mulaqat 🏫</h4>
+                    <p>"Pata nahi hum pehli baar kab mile the... Par jab aapko college admission ke time dekha tha, tab bilkul nahi laga tha ki aapse milunga, baat karunga ya hum relationship mein aayenge! Har evening aapko scooty se jaate hue dekhta tha, tab bhi kuch socha nahi tha. Lekin kehte hain na, kuch logon ko God pehle se hi plan karke bhejta hai... Hamaara milna koi coincidence nahi tha! 🌸✨"</p>
                 </div>
                 <div class="timeline-item">
-                    <h4>Jab Dil Se Dil Mila 🥺💖</h4>
-                    <p>Aapne apna trust hua, apni feelings share ki...</p>
+                    <h4>2. Jab Dil Se Dil Mila 🥺💖</h4>
+                    <p>"Jab aapse baatein hone lagi, aapko mujhpar trust hua... Aapne apni feelings aur apna dard ek anjaan ladke se share kiya, jo koi ladki kisi ko bata bhi nahi sakti. Aap mujhe daant te bhi the aur pyar bhi karte the... Tab mujhe bhi feelings aane lagi thi, par samajh nahi aata tha ki isko hi pyar kehte hain! ❤️"</p>
                 </div>
                 <div class="timeline-item">
-                    <h4>Confession Day - 19 June 2026 🙈</h4>
-                    <p>Meri toh himmat nahi thi bolne ki, par aapne confess kiya!</p>
+                    <h4>3. Confession Day – 19 June 2026 🙈🎉</h4>
+                    <p>"Meri toh himmat nahi thi bolne ki, par 19 June ko jab aapne khud confess kiya, toh mujhe yakin hi nahi ho raha tha! Main andar se itna khush tha ki poore ghar mein monkey ki tarah uchhal raha tha! 🐒💃 Ye din mere liye hamesha super special rahega... 💖"</p>
                 </div>
                 <div class="timeline-item">
-                    <h4>Hamaari First Date - 2 July 2026 🍦</h4>
-                    <p>2 July ki hamaari pehli date... wo pehla hug, wo pehli kiss!</p>
+                    <h4>4. Hamaari First Date – 2 July 2026 🍦✨</h4>
+                    <p>"2 July ki hamaari pehli date... Uss din aapse milne ke baad bohot achha laga tha! Main toh thoda shake bhi kar raha tha... Wo pehla hug, wo pehli kiss aur aapka wo bohot saara pyar... sab kuch bohot special tha! Mujhe aapke saath aise hi hazaron moments jeene hain! 🧸❤️"</p>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 3 (6 MEMORIES) -->
+        <!-- SLIDE 3: 6 MEMORIES (EXACT HIDDEN MESSAGES) -->
         <div class="slide" id="slide3">
-            <div class="teddy-box">
-                <div class="speech-bubble">Psst! Swipe left & right to see our photos! 📲 Tap photo for a secret magic message! 🪄✨</div>
-                <div><span style="font-size: 60px;">🧸</span></div>
+            <div class="teddy-box" onclick="reactBear(3)">
+                <div class="speech-bubble" id="teddyText3">Photo par tap karke mera hidden message padho! 🪄✨</div>
+                <div><span class="bear-avatar" id="teddyIcon3">🧸</span></div>
             </div>
-            <h3 style="color: #d63384;">Memories 🖼️</h3>
+            <h3 style="color: #f3bfff;">Memories 🖼️</h3>
             
             <div class="card-container">
                 <!-- CARD 1 -->
                 <div class="card active-card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front"><img src="photo1.jpg" alt="Memory 1"></div>
-                    <div class="card-back">"Aapke saath baat karte hue waqt ka pata hi nahi chalta!" ⌛💖</div>
+                    <div class="card-back">"Pata hai, jab bhi main aapki ye smile dekhta hoon na, mera pura mood ek minute mein sahi ho jata hai! ✨"</div>
                 </div>
                 <!-- CARD 2 -->
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front"><img src="photo2.jpg" alt="Memory 2"></div>
-                    <div class="card-back">"Aapki cuteness ka koi match nahi hai!" 😊</div>
+                    <div class="card-back">"Is photo mein aap itni zyada pyari lag rahi ho ki main sach mein bas dekhta hi reh gaya tha! ❤️"</div>
                 </div>
                 <!-- CARD 3 -->
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front"><img src="photo3.jpg" alt="Memory 3"></div>
-                    <div class="card-back">"Ye wala moment mere dil ke sabse kareeb hai..." 💜</div>
+                    <div class="card-back">"Ye wala moment mere dil ke sabse kareeb hai... Aapke saath bitaya har ek second bohot special lagta hai. 💜"</div>
                 </div>
                 <!-- CARD 4 -->
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front"><img src="photo4.jpg" alt="Memory 4"></div>
-                    <div class="card-back">"Jab bhi aap samne aati ho, face par badi si smile aa jati hai!" ✨</div>
+                    <div class="card-back">"Aapki cuteness ka koi match nahi hai! Jab bhi ye pic samne aati hai, mere face par apne aap badi si smile aa jati hai! 😊"</div>
                 </div>
                 <!-- CARD 5 -->
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front"><img src="photo5.jpg" alt="Memory 5"></div>
-                    <div class="card-back">"Aapke saath bitaya har ek second bohot special hai!" 🌸</div>
+                    <div class="card-back">"Aapke saath baat karte hue waqt ka pata hi nahi chalta... Aap meri life ki sabse khoobsurat baat ho! ⏳💖"</div>
                 </div>
                 <!-- CARD 6 -->
                 <div class="card" onclick="this.classList.toggle('flipped')">
                     <div class="card-front"><img src="photo6.jpg" alt="Memory 6"></div>
-                    <div class="card-back">"Aap meri life ki sabse khoobsurat baat ho!" 💐</div>
+                    <div class="card-back">"Mujhe aapke saath aise hi hazaron moments jeene hain aur bohot saari pyari memories banani hain! ✨"</div>
                 </div>
             </div>
 
             <div class="slider-controls">
                 <button class="slide-btn" onclick="prevCard()">⬅️ Prev</button>
-                <span id="cardCounter" style="font-size: 0.8rem; font-weight: bold;">1 / 6</span>
+                <span id="cardCounter" style="font-size: 0.88rem; font-weight: bold; color: #f3bfff;">1 / 6</span>
                 <button class="slide-btn" onclick="nextCard()">Next ➡️</button>
             </div>
         </div>
 
-        <!-- SLIDE 4 -->
+        <!-- SLIDE 4: FULL UNCUT ROMANTIC LETTER -->
         <div class="slide" id="slide4">
-            <div class="teddy-box">
-                <div class="speech-bubble">Listening quietly to your beautiful story... 🥺💌</div>
-                <div><span style="font-size: 60px;">🧸</span></div>
+            <div class="teddy-box" onclick="reactBear(4)">
+                <div class="speech-bubble" id="teddyText4">Listening quietly to your beautiful story... 🥺💌</div>
+                <div><span class="bear-avatar" id="teddyIcon4">🧸</span></div>
             </div>
-            <h3 style="color: #d63384; margin-bottom: 10px;">Khas Aapke Liye 💌</h3>
+            <h3 style="color: #f3bfff; margin-bottom: 10px;">Khas Aapke Liye 💌</h3>
             <div class="story-box">
-                <p><b>Bacchiiiiii suno na... ✨</b></p><br>
-                <p>Vaise toh hum roz hi baatein karte hain, lekin aaj kuch special hai...</p><br>
-                <p>Bacchiiiiii mein jab bhi aapke baare mein sochta hoon na ya aapki pic dekhta hoon, ek alag si hi smile aati hai... andar se bohot hi zyada khush ho jata hoon mein! 💍✨</p><br>
-                <p>Umm mein future dekhne lagta hoon hamaara aapke saath... aapke bina mera koi nahi... 🔒❤️</p>
+                <p><b>Bacchiiiiii suno na... 🌸</b></p>
+                <p>Vaise toh hum roz hi baatein karte hain, lekin aaj kuch special hai... ✨</p>
+                <p>Bacchiiiiii mein jab bhi aapke baare mein sochta hoon na ya aapki pic dekhta hoon, ek alag si hi smile aati hai... andar se bohot hi zyada khush ho jata hoon mein! 🥺💖</p>
+                <p>Umm mein future dekhne lagta hoon aapke saath, bohot zyada khush ho jata hoon... aapse shadi hoti hai, hamesha aapke saath rehta hoon yaar... har ek baat se khush ho jata hoon mein, bata nahi sakta itna khush ho jata hoon! 💍✨</p>
+                <p>Hamari first date yaad hai? Wo sach mein bohot hi zyada special hai mere liye, mein kabhi nahi bhool sakta! Bacchiiiiii mujhe sach mein kabhi nahi laga tha ki koi mujhe kiss aur hug karega... ye toh door ki baat hai, lekin koi itna pyar de sakta hai ye bhi nahi... lekin aapne diya mujhe! 🥺❤️</p>
+                <p>Aapke saath har ek bitaya hua pal mere liye special hai. Aapki ek smile se mein itna khush ho jata hoon jitna koi prize lagne par nahi hota! 🎁💖</p>
+                <p>Har baar mujhe support kiya aapne... tension hota tha tab shant kiya, overthink karta tha tab shant kiya...</p>
+                <p>Lekin Bacchiiiiii isi baat ke liye overthink karta hoon ki hum ek kaise honge, ya aap mujhe kahin chhodke na jao... bas hamesha aapko khone ka dar laga rehta hai. 💔</p>
+                <p>Bacchiiiiii aapko kisi baat ke liye daatne ka man nahi hota yaar, lekin har koi aake aapko 'I like you' bolke jayega toh meri haalat kharab hogi na... isiliye jealous aur possessive ho jata hoon mein. Nahi dekh sakta kisi aur ke saath aapko... 🥺</p>
+                <p>Aur future mein bhi mein aapko kisi ajnabi ko dena nahi chahta... aap sirf mere ho aur mein sirf aapka! 🔒❤️</p>
+                <p>Aap mere liye sach mein bohot hi zyada mayane rakhte ho, mere liye aap bohot hi zyada important ho. Mein aapke liye kuch bhi karne ke liye tayyar hoon, lekin aapse door nahi hona... Mana ki hurt karta hoon, lekin mein sach mein bohot hi zyada pyar karta hoon aapse! Aap meri chhotisi cutie Bacchiiiiii ho! 🧸💖</p>
+                <p>Mujhe ye safar hamesha ke liye chahiye. Jab se aap meri life mein aaye ho, poori tarah se meri life change ho gayi hai. Pehle se bohot hi zyada khush rehne laga hoon mein... akela rehta tha, lekin aapke aane ke baad sirf aapke saath jeena sikha diya mujhe! ✨</p>
+                <p>Kabhi kabhi lagta hai hamesha aise paas hi rahu, har second aapke paas rahu... lekin abhi wo time aaya nahi hai. Lekin jaldi se wo time aa jaye jaha hum har samay saath mein rahein... koi na disturb karne wala ho, hamari pyari chhotisi alag duniya jaha sirf hum ho! 🌍💖</p>
+                <p>Bacchiiiiii mein sach bata raha hoon... aap nahi toh aapke alawa koi aur nahi! Aapse hi shadi karni hai aur aapse hi karunga... 💍✨</p>
+                <p><b>Aur yahi chhota sa surprise hai mera aapke liye, ummeed hai aapko pasand aayega... 😘😘😘😘😘</b></p>
             </div>
         </div>
 
-        <!-- SLIDE 5 -->
+        <!-- SLIDE 5: PROPOSAL -->
         <div class="slide" id="slide5">
-            <div class="teddy-box">
+            <div class="teddy-box" onclick="reactBear(5)">
                 <div class="speech-bubble" id="teddyText5">I challenge you! Try to tap the 'NO' button if you can! 😈</div>
-                <div><span style="font-size: 60px;">🧸🎉</span></div>
+                <div><span class="bear-avatar" id="teddyIcon5">🧸🎉</span></div>
             </div>
             <div class="proposal-chars">👩‍❤️‍👨</div>
-            <h2 style="color: #d63384;">Will You Stay With Me Forever? 💍✨</h2>
-            <p style="margin: 10px 0; font-size: 0.9rem;">Ur my Pyari Bacchiiii! ❤️</p>
+            <h2 style="color: #f3bfff;">Will You Stay With Me Forever? 💍✨</h2>
+            <p style="margin: 10px 0; font-size: 0.95rem; color: #e8a7ff;">Ur my Pyari Bacchiiii! ❤️</p>
             
             <div class="btn-group" style="position: relative; height: 100px; margin-top: 20px;">
                 <button class="btn btn-yes" onclick="celebrate()">YES! 💍💖</button>
@@ -193,9 +308,9 @@
     </div>
 
     <script>
-        // Stars generator
+        // Background Stars Generator
         const starsContainer = document.getElementById('starsContainer');
-        for(let i=0; i<30; i++) {
+        for(let i=0; i<35; i++) {
             const star = document.createElement('div');
             star.className = 'star';
             star.style.width = Math.random() * 8 + 4 + 'px';
@@ -206,7 +321,7 @@
             starsContainer.appendChild(star);
         }
 
-        // Slide Management
+        // Slide Navigation
         let currentSlide = 1;
         const totalSlides = 5;
 
@@ -223,45 +338,4 @@
             if (currentSlide > 1) { currentSlide--; showSlide(currentSlide); }
         }
 
-        // Slide 1: Angry Teddy logic
-        function triggerAngryTeddy() {
-            document.getElementById('teddyText1').innerText = "Hey! Why did you tap CLOSE?! 😡 Don't even think about closing this! Click OPEN right now! 🥺";
-            document.getElementById('teddyIcon1').innerText = "😾";
-        }
-
-        // Slide 3: 6 Cards Slider
-        let currentCard = 0;
-        const cards = document.querySelectorAll('.card');
-
-        function updateCards() {
-            cards.forEach((c, index) => {
-                c.classList.remove('active-card');
-                if(index === currentCard) c.classList.add('active-card');
-            });
-            document.getElementById('cardCounter').innerText = `${currentCard + 1} / ${cards.length}`;
-        }
-
-        function nextCard() {
-            currentCard = (currentCard + 1) % cards.length;
-            updateCards();
-        }
-
-        function prevCard() {
-            currentCard = (currentCard - 1 + cards.length) % cards.length;
-            updateCards();
-        }
-
-        // Slide 5: Dodging No Button
-        function dodgeNo() {
-            const btn = document.getElementById('noBtn');
-            const x = Math.random() * (window.innerWidth - 100) - (window.innerWidth/2 - 50);
-            const y = Math.random() * 150 - 75;
-            btn.style.transform = `translate(${x}px, ${y}px)`;
-        }
-
-        function celebrate() {
-            alert("YAAAY! ❤️ Best decision ever! I Love You! 🎉✨");
-        }
-    </script>
-</body>
-</html>
+        // Angry Bear Trigger (
