@@ -1,205 +1,267 @@
+    
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Bacchiiiiii 🧸✨</title>
-<style>
-  body { 
-    background-color: #ffeef8; 
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    color: #4a4a4a; 
-    margin: 0; 
-    padding: 20px; 
-    text-align: center; 
-  }
-  h1 { color: #d63384; font-size: 2.2rem; margin-bottom: 20px; }
-  h2 { color: #9c27b0; margin-top: 50px; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Cutie Bacchiiii 🧸✨</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #feada6 100%); min-height: 100vh; overflow-x: hidden; color: #333; }
+        
+        /* Floating Background Elements */
+        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .star { position: absolute; background: #fff; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); animation: floatStar 3s infinite ease-in-out alternate; }
+        @keyframes floatStar { 0% { opacity: 0.3; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1.2); } }
 
-  /* Grid & 3D Flip Card Styles */
-  .grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-    gap: 25px; 
-    max-width: 1000px; 
-    margin: 0 auto; 
-    perspective: 1000px; 
-  }
-  .card { 
-    width: 100%; 
-    height: 350px; 
-    position: relative; 
-    transform-style: preserve-3d; 
-    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-    cursor: pointer; 
-  }
-  .card.flipped { 
-    transform: rotateY(180deg); 
-  }
-  .card-face { 
-    position: absolute; 
-    width: 100%; 
-    height: 100%; 
-    backface-visibility: hidden; 
-    border-radius: 15px; 
-    box-shadow: 0 8px 20px rgba(0,0,0,0.12); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    box-sizing: border-box; 
-    padding: 15px; 
-  }
-  .card-front { 
-    background: #ffffff; 
-    padding: 10px; 
-  }
-  .card-front img { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover; 
-    border-radius: 10px; 
-  }
-  .card-back { 
-    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); 
-    color: #5d1039; 
-    transform: rotateY(180deg); 
-    font-size: 1.05rem; 
-    line-height: 1.6; 
-    font-weight: 600; 
-    border: 3px solid #fff; 
-  }
+        /* Slide Container */
+        .container { max-width: 500px; margin: 0 auto; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 15px 80px 15px; position: relative; z-index: 2; }
+        .slide { display: none; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border-radius: 20px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); border: 2px solid rgba(255,255,255,0.6); text-align: center; }
+        .slide.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* Timeline */
-  .timeline { max-width: 700px; margin: 40px auto; text-align: left; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
-  .timeline-item { border-left: 3px solid #ff69b4; padding-left: 20px; margin-bottom: 25px; position: relative; }
-  .timeline-item::before { content: '🌸'; position: absolute; left: -14px; top: 0; background: #ffeef8; border-radius: 50%; }
-  .timeline-item h3 { margin: 0 0 5px 0; color: #d63384; }
-  .timeline-item p { margin: 0; line-height: 1.5; color: #444; }
+        /* Teddy Section */
+        .teddy-box { margin-bottom: 15px; position: relative; }
+        .speech-bubble { background: #fff; border: 2px solid #ff4b72; padding: 10px 15px; border-radius: 15px; font-size: 0.85rem; font-weight: 600; color: #ff4b72; display: inline-block; margin-top: 5px; position: relative; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
 
-  /* Proposal Section */
-  .proposal { max-width: 700px; margin: 40px auto; background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(214,51,132,0.15); border: 2px solid #ffc2d1; text-align: left; line-height: 1.8; white-space: pre-line; }
-</style>
+        /* Slide 1 Styles */
+        .welcome-title { color: #d63384; font-size: 1.6rem; font-weight: bold; margin: 15px 0; }
+        .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
+        .btn { padding: 10px 25px; border: none; border-radius: 25px; font-weight: bold; cursor: pointer; transition: 0.2s; font-size: 1rem; }
+        .btn-open { background: #28a745; color: white; }
+        .btn-close { background: #dc3545; color: white; }
+
+        /* Slide 2: Timeline */
+        .timeline { text-align: left; margin-top: 15px; }
+        .timeline-item { background: #fff; padding: 12px; border-left: 4px solid #ff4b72; margin-bottom: 10px; border-radius: 0 10px 10px 0; font-size: 0.85rem; }
+        .timeline-item h4 { color: #d63384; margin-bottom: 4px; }
+
+        /* Slide 3: Memories Slider & Flip */
+        .card-container { perspective: 1000px; width: 100%; height: 320px; margin: 15px 0; position: relative; }
+        .card { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.6s; border-radius: 15px; cursor: pointer; display: none; }
+        .card.active-card { display: block; }
+        .card.flipped { transform: rotateY(180deg); }
+        .card-front, .card-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .card-front img { width: 100%; height: 100%; object-fit: cover; }
+        .card-back { background: #fff; color: #d63384; transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; padding: 15px; font-size: 0.9rem; text-align: center; font-weight: bold; }
+        .slider-controls { display: flex; justify-content: space-between; align-items: center; }
+        .slide-btn { background: #ff4b72; color: white; border: none; padding: 5px 15px; border-radius: 15px; cursor: pointer; }
+
+        /* Slide 4: Emotional Text */
+        .story-box { background: #fff; padding: 15px; border-radius: 15px; font-size: 0.85rem; line-height: 1.5; color: #444; max-height: 350px; overflow-y: auto; text-align: left; }
+
+        /* Slide 5: Proposal */
+        .proposal-chars { font-size: 2.5rem; margin: 10px 0; }
+        .btn-yes { background: #ff4b72; color: white; font-size: 1.1rem; padding: 12px 30px; }
+        .btn-no { background: #6c757d; color: white; position: absolute; }
+
+        /* Navigation Controls */
+        .nav-controls { position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 10; }
+        .nav-btn { background: #fff; border: 2px solid #ff4b72; color: #ff4b72; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    </style>
 </head>
 <body>
 
-  <h1>For My Cutie Bacchiiiiii 🧸✨</h1>
-  <p style="color: #888; margin-bottom: 30px;">(Photo par tap karke secret message dekho 🔄)</p>
+    <div class="stars" id="starsContainer"></div>
 
-  <!-- SECTION 1: FLIP MEMORY CARDS -->
-  <div class="grid">
-    <!-- Card 1 -->
-    <div class="card" onclick="this.classList.toggle('flipped')">
-      <div class="card-face card-front">
-        <img src="https://i.postimg.cc/C50sKmDr/Snapchat-516590332.jpg" alt="Memory 1">
-      </div>
-      <div class="card-face card-back">
-        <p>"Pata hai, jab bhi main aapki ye smile dekhta hoon na, mera pura mood ek minute mein sahi ho jata hai! ✨"</p>
-      </div>
+    <div class="container">
+        <!-- SLIDE 1 -->
+        <div class="slide active" id="slide1">
+            <div class="teddy-box">
+                <div class="speech-bubble" id="teddyText1">Hi! Welcome! 💖 Whatever you do, don't tap the 'Close' button even by mistake! 😜</div>
+                <div><span style="font-size: 70px;" id="teddyIcon1">🧸</span></div>
+            </div>
+            <div class="welcome-title">For My Cutie Bacchiiii 🧸✨</div>
+            <p style="font-size: 0.9rem; color: #666;">Photo par tap karke secret message dekho</p>
+            <div class="btn-group">
+                <button class="btn btn-open" onclick="nextSlide()">OPEN 🟢</button>
+                <button class="btn btn-close" onclick="triggerAngryTeddy()">CLOSE 🔴</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide" id="slide2">
+            <div class="teddy-box">
+                <div class="speech-bubble">Look how far we've come! Walk through our sweet timeline below! 🚶‍♂️✨</div>
+                <div><span style="font-size: 60px;">🧸</span></div>
+            </div>
+            <h3 style="color: #d63384;">Hamaari Pyari Journey ⏳</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Hamaari Pehli Mulaqat 🏫</h4>
+                    <p>Pata nahi hum pehli baar kab mile the... college admission time dekha tha!</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Jab Dil Se Dil Mila 🥺💖</h4>
+                    <p>Aapne apna trust hua, apni feelings share ki...</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Confession Day - 19 June 2026 🙈</h4>
+                    <p>Meri toh himmat nahi thi bolne ki, par aapne confess kiya!</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Hamaari First Date - 2 July 2026 🍦</h4>
+                    <p>2 July ki hamaari pehli date... wo pehla hug, wo pehli kiss!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3 (6 MEMORIES) -->
+        <div class="slide" id="slide3">
+            <div class="teddy-box">
+                <div class="speech-bubble">Psst! Swipe left & right to see our photos! 📲 Tap photo for a secret magic message! 🪄✨</div>
+                <div><span style="font-size: 60px;">🧸</span></div>
+            </div>
+            <h3 style="color: #d63384;">Memories 🖼️</h3>
+            
+            <div class="card-container">
+                <!-- CARD 1 -->
+                <div class="card active-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front"><img src="photo1.jpg" alt="Memory 1"></div>
+                    <div class="card-back">"Aapke saath baat karte hue waqt ka pata hi nahi chalta!" ⌛💖</div>
+                </div>
+                <!-- CARD 2 -->
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front"><img src="photo2.jpg" alt="Memory 2"></div>
+                    <div class="card-back">"Aapki cuteness ka koi match nahi hai!" 😊</div>
+                </div>
+                <!-- CARD 3 -->
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front"><img src="photo3.jpg" alt="Memory 3"></div>
+                    <div class="card-back">"Ye wala moment mere dil ke sabse kareeb hai..." 💜</div>
+                </div>
+                <!-- CARD 4 -->
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front"><img src="photo4.jpg" alt="Memory 4"></div>
+                    <div class="card-back">"Jab bhi aap samne aati ho, face par badi si smile aa jati hai!" ✨</div>
+                </div>
+                <!-- CARD 5 -->
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front"><img src="photo5.jpg" alt="Memory 5"></div>
+                    <div class="card-back">"Aapke saath bitaya har ek second bohot special hai!" 🌸</div>
+                </div>
+                <!-- CARD 6 -->
+                <div class="card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-front"><img src="photo6.jpg" alt="Memory 6"></div>
+                    <div class="card-back">"Aap meri life ki sabse khoobsurat baat ho!" 💐</div>
+                </div>
+            </div>
+
+            <div class="slider-controls">
+                <button class="slide-btn" onclick="prevCard()">⬅️ Prev</button>
+                <span id="cardCounter" style="font-size: 0.8rem; font-weight: bold;">1 / 6</span>
+                <button class="slide-btn" onclick="nextCard()">Next ➡️</button>
+            </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide" id="slide4">
+            <div class="teddy-box">
+                <div class="speech-bubble">Listening quietly to your beautiful story... 🥺💌</div>
+                <div><span style="font-size: 60px;">🧸</span></div>
+            </div>
+            <h3 style="color: #d63384; margin-bottom: 10px;">Khas Aapke Liye 💌</h3>
+            <div class="story-box">
+                <p><b>Bacchiiiiii suno na... ✨</b></p><br>
+                <p>Vaise toh hum roz hi baatein karte hain, lekin aaj kuch special hai...</p><br>
+                <p>Bacchiiiiii mein jab bhi aapke baare mein sochta hoon na ya aapki pic dekhta hoon, ek alag si hi smile aati hai... andar se bohot hi zyada khush ho jata hoon mein! 💍✨</p><br>
+                <p>Umm mein future dekhne lagta hoon hamaara aapke saath... aapke bina mera koi nahi... 🔒❤️</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide" id="slide5">
+            <div class="teddy-box">
+                <div class="speech-bubble" id="teddyText5">I challenge you! Try to tap the 'NO' button if you can! 😈</div>
+                <div><span style="font-size: 60px;">🧸🎉</span></div>
+            </div>
+            <div class="proposal-chars">👩‍❤️‍👨</div>
+            <h2 style="color: #d63384;">Will You Stay With Me Forever? 💍✨</h2>
+            <p style="margin: 10px 0; font-size: 0.9rem;">Ur my Pyari Bacchiiii! ❤️</p>
+            
+            <div class="btn-group" style="position: relative; height: 100px; margin-top: 20px;">
+                <button class="btn btn-yes" onclick="celebrate()">YES! 💍💖</button>
+                <button class="btn btn-no" id="noBtn" onmouseover="dodgeNo()" onclick="dodgeNo()">NO 🙈</button>
+            </div>
+        </div>
+
+        <!-- Global Navigation -->
+        <div class="nav-controls">
+            <button class="nav-btn" onclick="prevSlide()">⬅️ Back</button>
+            <button class="nav-btn" onclick="nextSlide()">Next ➡️</button>
+        </div>
     </div>
 
-    <!-- Card 2 -->
-    <div class="card" onclick="this.classList.toggle('flipped')">
-      <div class="card-face card-front">
-        <img src="https://i.postimg.cc/xdSChhSw/Snapchat-253137985.jpg" alt="Memory 2">
-      </div>
-      <div class="card-face card-back">
-        <p>"Is photo mein aap itni zyada pyari lag rahi ho ki main sach mein bas dekhta hi reh gaya tha! ❤️"</p>
-      </div>
-    </div>
+    <script>
+        // Stars generator
+        const starsContainer = document.getElementById('starsContainer');
+        for(let i=0; i<30; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 8 + 4 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
 
-    <!-- Card 3 -->
-    <div class="card" onclick="this.classList.toggle('flipped')">
-      <div class="card-face card-front">
-        <img src="https://i.postimg.cc/RVkVJyqn/Snapchat-1166497996.jpg" alt="Memory 3">
-      </div>
-      <div class="card-face card-back">
-        <p>"Ye wala moment mere dil ke sabse kareeb hai... Aapke saath bitaya har ek second bohot special lagta hai. 💜"</p>
-      </div>
-    </div>
+        // Slide Management
+        let currentSlide = 1;
+        const totalSlides = 5;
 
-    <!-- Card 4 -->
-    <div class="card" onclick="this.classList.toggle('flipped')">
-      <div class="card-face card-front">
-        <img src="https://i.postimg.cc/DzyZ7s85/Snapchat-1429957583.jpg" alt="Memory 4">
-      </div>
-      <div class="card-face card-back">
-        <p>"Aapki cuteness ka koi match nahi hai! Jab bhi ye pic samne aati hai, mere face par apne aap badi si smile aa jati hai! 😊"</p>
-      </div>
-    </div>
+        function showSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById(`slide${n}`).classList.add('active');
+        }
 
-    <!-- Card 5 -->
-    <div class="card" onclick="this.classList.toggle('flipped')">
-      <div class="card-face card-front">
-        <img src="https://i.postimg.cc/Bb1fqZTj/Snapchat-268918122.jpg" alt="Memory 5">
-      </div>
-      <div class="card-face card-back">
-        <p>"Aapke saath baat karte hue waqt ka pata hi nahi chalta... Aap meri life ki sabse khoobsurat baat ho! ⏳💖"</p>
-      </div>
-    </div>
+        function nextSlide() {
+            if (currentSlide < totalSlides) { currentSlide++; showSlide(currentSlide); }
+        }
 
-    <!-- Card 6 -->
-    <div class="card" onclick="this.classList.toggle('flipped')">
-      <div class="card-face card-front">
-        <img src="https://i.postimg.cc/ZYyqYJ5t/Snapchat-464764640.jpg" alt="Memory 6">
-      </div>
-      <div class="card-face card-back">
-        <p>"Mujhe aapke saath aise hi hazaron moments jeene hain aur bohot saari pyari memories banani hain! ✨"</p>
-      </div>
-    </div>
-  </div>
+        function prevSlide() {
+            if (currentSlide > 1) { currentSlide--; showSlide(currentSlide); }
+        }
 
-  <!-- SECTION 2: TIMELINE -->
-  <h2>Hamaari Pyari Journey ⏳</h2>
-  <div class="timeline">
-    <div class="timeline-item">
-      <h3>Hamaari Pehli Mulaqat 🏫</h3>
-      <p>Pata nahi hum pehli baar kab mile the... Par jab aapko college admission ke time dekha tha, tab bilkul nahi laga tha ki aapse milunga, baat karunga ya hum relationship mein aayenge! Har evening aapko scooty se jaate hue dekhta tha, tab bhi kuch socha nahi tha. Lekin kehte hain na, kuch logon ko God pehle se hi plan karke bhejta hai... Hamaara milna koi coincidence nahi tha! 🌸✨</p>
-    </div>
-    <div class="timeline-item">
-      <h3>Jab Dil Se Dil Mila 🥺💖</h3>
-      <p>Jab aapse baatein hone lagi, aapko mujhpar trust hua... Aapne apni feelings aur apna dard ek anjaan ladke se share kiya, jo koi ladki kisi ko bata bhi nahi sakti. Aap mujhe daant te bhi the aur pyar bhi karte the... Tab mujhe bhi feelings aane lagi thi, par samajh nahi aata tha ki isko hi pyar kehte hain! ❤️</p>
-    </div>
-    <div class="timeline-item">
-      <h3>Confession Day – 19 June 2026 🙈🎉</h3>
-      <p>Meri toh himmat nahi thi bolne ki, par 19 June ko jab aapne khud confess kiya, toh mujhe yakin hi nahi ho raha tha! Main andar se itna khush tha ki poore ghar mein monkey ki tarah uchhal raha tha! 🐒💃 Ye din mere liye hamesha super special rahega... 💖</p>
-    </div>
-    <div class="timeline-item">
-      <h3>Hamaari First Date – 2 July 2026 🍦✨</h3>
-      <p>2 July ki hamaari pehli date... Uss din aapse milne ke baad bohot achha laga tha! Main toh thoda shake bhi kar raha tha... Wo pehla hug, wo pehli kiss aur aapka wo bohot saara pyar... sab kuch bohot special tha! Mujhe aapke saath aise hi hazaron moments jeene hain! 🧸❤️</p>
-    </div>
-  </div>
+        // Slide 1: Angry Teddy logic
+        function triggerAngryTeddy() {
+            document.getElementById('teddyText1').innerText = "Hey! Why did you tap CLOSE?! 😡 Don't even think about closing this! Click OPEN right now! 🥺";
+            document.getElementById('teddyIcon1').innerText = "😾";
+        }
 
-  <!-- SECTION 3: PROPOSAL -->
-  <h2>Khas Aapke Liye 💌</h2>
-  <div class="proposal">
-Bacchiiiiii suno na... 🌸
+        // Slide 3: 6 Cards Slider
+        let currentCard = 0;
+        const cards = document.querySelectorAll('.card');
 
-Vaise toh hum roz hi baatein karte hain, lekin aaj kuch special hai... ✨  
-Bacchiiiiii mein jab bhi aapke baare mein sochta hoon na ya aapki pic dekhta hoon, ek alag si hi smile aati hai... andar se bohot hi zyada khush ho jata hoon mein! 🥺💖  
+        function updateCards() {
+            cards.forEach((c, index) => {
+                c.classList.remove('active-card');
+                if(index === currentCard) c.classList.add('active-card');
+            });
+            document.getElementById('cardCounter').innerText = `${currentCard + 1} / ${cards.length}`;
+        }
 
-Umm mein future dekhne lagta hoon aapke saath, bohot zyada khush ho jata hoon... aapse shadi hoti hai, hamesha aapke saath rehta hoon yaar... har ek baat se khush ho jata hoon mein, bata nahi sakta itna khush ho jata hoon! 💍✨
+        function nextCard() {
+            currentCard = (currentCard + 1) % cards.length;
+            updateCards();
+        }
 
-Hamari first date yaad hai? Wo sach mein bohot hi zyada special hai mere liye, mein kabhi nahi bhool sakta! Bacchiiiiii mujhe sach mein kabhi nahi laga tha ki koi mujhe kiss aur hug karega... ye toh door ki baat hai, lekin koi itna pyar de sakta hai ye bhi nahi... lekin aapne diya mujhe! 🥺❤️  
+        function prevCard() {
+            currentCard = (currentCard - 1 + cards.length) % cards.length;
+            updateCards();
+        }
 
-Aapke saath har ek bitaya hua pal mere liye special hai. Aapki ek smile se mein itna khush ho jata hoon jitna koi prize lagne par nahi hota! 🎁💖  
-Har baar mujhe support kiya aapne... tension hota tha tab shant kiya, overthink karta tha tab shant kiya...
+        // Slide 5: Dodging No Button
+        function dodgeNo() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - 100) - (window.innerWidth/2 - 50);
+            const y = Math.random() * 150 - 75;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }
 
-Lekin Bacchiiiiii isi baat ke liye overthink karta hoon ki hum ek kaise honge, ya aap mujhe kahin chhodke na jao... bas hamesha aapko khone ka dar laga rehta hai. 💔  
-Bacchiiiiii aapko kisi baat ke liye daatne ka man nahi hota yaar, lekin har koi aake aapko 'I like you' bolke jayega toh meri haalat kharab hogi na... isiliye jealous aur possessive ho jata hoon mein. Nahi dekh sakta kisi aur ke saath aapko... 🥺  
-
-Aur future mein bhi mein aapko kisi ajnabi ko dena nahi chahta... aap sirf mere ho aur mein sirf aapka! 🔒❤️  
-
-Aap mere liye sach mein bohot hi zyada mayane rakhte ho, mere liye aap bohot hi zyada important ho. Mein aapke liye kuch bhi karne ke liye tayyar hoon, lekin aapse door nahi hona... Mana ki hurt karta hoon, lekin mein sach mein bohot hi zyada pyar karta hoon aapse! Aap meri chhotisi cutie Bacchiiiiii ho! 🧸💖
-
-Mujhe ye safar hamesha ke liye chahiye. Jab se aap meri life mein aaye ho, poori tarah se meri life change ho gayi hai. Pehle se bohot hi zyada khush rehne laga hoon mein... akela rehta tha, lekin aapke aane ke baad sirf aapke saath jeena sikha diya mujhe! ✨
-
-Kabhi kabhi lagta hai hamesha aise paas hi rahu, har second aapke paas rahu... lekin abhi wo time aaya nahi hai. Lekin jaldi se wo time aa jaye jaha hum har samay saath mein rahein... koi na disturb karne wala ho, hamari pyari chhotisi alag duniya jaha sirf hum ho! 🌍💖  
-
-Bacchiiiiii mein sach bata raha hoon... aap nahi toh aapke alawa koi aur nahi! Aapse hi shadi karni hai aur aapse hi karunga... 💍✨  
-
-Aur yahi chhota sa surprise hai mera aapke liye, ummeed hai aapko pasand aayega... 😘😘😘😘😘
-  </div>
-
+        function celebrate() {
+            alert("YAAAY! ❤️ Best decision ever! I Love You! 🎉✨");
+        }
+    </script>
 </body>
 </html>
-  
