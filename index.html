@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Bacchiiiiii 🧸✨</title>
+<style>
+  body { 
+    background-color: #ffeef8; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    color: #4a4a4a; 
+    margin: 0; 
+    padding: 20px; 
+    text-align: center; 
+  }
+  h1 { color: #d63384; font-size: 2.2rem; margin-bottom: 20px; }
+  h2 { color: #9c27b0; margin-top: 50px; }
+
+  /* Grid & 3D Flip Card Styles */
+  .grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 25px; 
+    max-width: 1000px; 
+    margin: 0 auto; 
+    perspective: 1000px; 
+  }
+  .card { 
+    width: 100%; 
+    height: 350px; 
+    position: relative; 
+    transform-style: preserve-3d; 
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    cursor: pointer; 
+  }
+  .card.flipped { 
+    transform: rotateY(180deg); 
+  }
+  .card-face { 
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    backface-visibility: hidden; 
+    border-radius: 15px; 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    box-sizing: border-box; 
+    padding: 15px; 
+  }
+  .card-front { 
+    background: #ffffff; 
+    padding: 10px; 
+  }
+  .card-front img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 10px; 
+  }
+  .card-back { 
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); 
+    color: #5d1039; 
+    transform: rotateY(180deg); 
+    font-size: 1.05rem; 
+    line-height: 1.6; 
+    font-weight: 600; 
+    border: 3px solid #fff; 
+  }
+
+  /* Timeline */
+  .timeline { max-width: 700px; margin: 40px auto; text-align: left; background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+  .timeline-item { border-left: 3px solid #ff69b4; padding-left: 20px; margin-bottom: 25px; position: relative; }
+  .timeline-item::before { content: '🌸'; position: absolute; left: -14px; top: 0; background: #ffeef8; border-radius: 50%; }
+  .timeline-item h3 { margin: 0 0 5px 0; color: #d63384; }
+  .timeline-item p { margin: 0; line-height: 1.5; color: #444; }
+
+  /* Proposal Section */
+  .proposal { max-width: 700px; margin: 40px auto; background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 4px 20px rgba(214,51,132,0.15); border: 2px solid #ffc2d1; text-align: left; line-height: 1.8; white-space: pre-line; }
+</style>
+</head>
+<body>
+
+  <h1>For My Cutie Bacchiiiiii 🧸✨</h1>
+  <p style="color: #888; margin-bottom: 30px;">(Photo par tap karke secret message dekho 🔄)</p>
+
+  <!-- SECTION 1: FLIP MEMORY CARDS -->
+  <div class="grid">
+    <!-- Card 1 -->
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-face card-front">
+        <img src="https://i.postimg.cc/C50sKmDr/Snapchat-516590332.jpg" alt="Memory 1">
+      </div>
+      <div class="card-face card-back">
+        <p>"Pata hai, jab bhi main aapki ye smile dekhta hoon na, mera pura mood ek minute mein sahi ho jata hai! ✨"</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-face card-front">
+        <img src="https://i.postimg.cc/xdSChhSw/Snapchat-253137985.jpg" alt="Memory 2">
+      </div>
+      <div class="card-face card-back">
+        <p>"Is photo mein aap itni zyada pyari lag rahi ho ki main sach mein bas dekhta hi reh gaya tha! ❤️"</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-face card-front">
+        <img src="https://i.postimg.cc/RVkVJyqn/Snapchat-1166497996.jpg" alt="Memory 3">
+      </div>
+      <div class="card-face card-back">
+        <p>"Ye wala moment mere dil ke sabse kareeb hai... Aapke saath bitaya har ek second bohot special lagta hai. 💜"</p>
+      </div>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-face card-front">
+        <img src="https://i.postimg.cc/DzyZ7s85/Snapchat-1429957583.jpg" alt="Memory 4">
+      </div>
+      <div class="card-face card-back">
+        <p>"Aapki cuteness ka koi match nahi hai! Jab bhi ye pic samne aati hai, mere face par apne aap badi si smile aa jati hai! 😊"</p>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-face card-front">
+        <img src="https://i.postimg.cc/Bb1fqZTj/Snapchat-268918122.jpg" alt="Memory 5">
+      </div>
+      <div class="card-face card-back">
+        <p>"Aapke saath baat karte hue waqt ka pata hi nahi chalta... Aap meri life ki sabse khoobsurat baat ho! ⏳💖"</p>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-face card-front">
+        <img src="https://i.postimg.cc/ZYyqYJ5t/Snapchat-464764640.jpg" alt="Memory 6">
+      </div>
+      <div class="card-face card-back">
+        <p>"Mujhe aapke saath aise hi hazaron moments jeene hain aur bohot saari pyari memories banani hain! ✨"</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: TIMELINE -->
+  <h2>Hamaari Pyari Journey ⏳</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Hamaari Pehli Mulaqat 🏫</h3>
+      <p>Pata nahi hum pehli baar kab mile the... Par jab aapko college admission ke time dekha tha, tab bilkul nahi laga tha ki aapse milunga, baat karunga ya hum relationship mein aayenge! Har evening aapko scooty se jaate hue dekhta tha, tab bhi kuch socha nahi tha. Lekin kehte hain na, kuch logon ko God pehle se hi plan karke bhejta hai... Hamaara milna koi coincidence nahi tha! 🌸✨</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Jab Dil Se Dil Mila 🥺💖</h3>
+      <p>Jab aapse baatein hone lagi, aapko mujhpar trust hua... Aapne apni feelings aur apna dard ek anjaan ladke se share kiya, jo koi ladki kisi ko bata bhi nahi sakti. Aap mujhe daant te bhi the aur pyar bhi karte the... Tab mujhe bhi feelings aane lagi thi, par samajh nahi aata tha ki isko hi pyar kehte hain! ❤️</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Confession Day – 19 June 2026 🙈🎉</h3>
+      <p>Meri toh himmat nahi thi bolne ki, par 19 June ko jab aapne khud confess kiya, toh mujhe yakin hi nahi ho raha tha! Main andar se itna khush tha ki poore ghar mein monkey ki tarah uchhal raha tha! 🐒💃 Ye din mere liye hamesha super special rahega... 💖</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Hamaari First Date – 2 July 2026 🍦✨</h3>
+      <p>2 July ki hamaari pehli date... Uss din aapse milne ke baad bohot achha laga tha! Main toh thoda shake bhi kar raha tha... Wo pehla hug, wo pehli kiss aur aapka wo bohot saara pyar... sab kuch bohot special tha! Mujhe aapke saath aise hi hazaron moments jeene hain! 🧸❤️</p>
+    </div>
+  </div>
+
+  <!-- SECTION 3: PROPOSAL -->
+  <h2>Khas Aapke Liye 💌</h2>
+  <div class="proposal">
+Bacchiiiiii suno na... 🌸
+
+Vaise toh hum roz hi baatein karte hain, lekin aaj kuch special hai... ✨  
+Bacchiiiiii mein jab bhi aapke baare mein sochta hoon na ya aapki pic dekhta hoon, ek alag si hi smile aati hai... andar se bohot hi zyada khush ho jata hoon mein! 🥺💖  
+
+Umm mein future dekhne lagta hoon aapke saath, bohot zyada khush ho jata hoon... aapse shadi hoti hai, hamesha aapke saath rehta hoon yaar... har ek baat se khush ho jata hoon mein, bata nahi sakta itna khush ho jata hoon! 💍✨
+
+Hamari first date yaad hai? Wo sach mein bohot hi zyada special hai mere liye, mein kabhi nahi bhool sakta! Bacchiiiiii mujhe sach mein kabhi nahi laga tha ki koi mujhe kiss aur hug karega... ye toh door ki baat hai, lekin koi itna pyar de sakta hai ye bhi nahi... lekin aapne diya mujhe! 🥺❤️  
+
+Aapke saath har ek bitaya hua pal mere liye special hai. Aapki ek smile se mein itna khush ho jata hoon jitna koi prize lagne par nahi hota! 🎁💖  
+Har baar mujhe support kiya aapne... tension hota tha tab shant kiya, overthink karta tha tab shant kiya...
+
+Lekin Bacchiiiiii isi baat ke liye overthink karta hoon ki hum ek kaise honge, ya aap mujhe kahin chhodke na jao... bas hamesha aapko khone ka dar laga rehta hai. 💔  
+Bacchiiiiii aapko kisi baat ke liye daatne ka man nahi hota yaar, lekin har koi aake aapko 'I like you' bolke jayega toh meri haalat kharab hogi na... isiliye jealous aur possessive ho jata hoon mein. Nahi dekh sakta kisi aur ke saath aapko... 🥺  
+
+Aur future mein bhi mein aapko kisi ajnabi ko dena nahi chahta... aap sirf mere ho aur mein sirf aapka! 🔒❤️  
+
+Aap mere liye sach mein bohot hi zyada mayane rakhte ho, mere liye aap bohot hi zyada important ho. Mein aapke liye kuch bhi karne ke liye tayyar hoon, lekin aapse door nahi hona... Mana ki hurt karta hoon, lekin mein sach mein bohot hi zyada pyar karta hoon aapse! Aap meri chhotisi cutie Bacchiiiiii ho! 🧸💖
+
+Mujhe ye safar hamesha ke liye chahiye. Jab se aap meri life mein aaye ho, poori tarah se meri life change ho gayi hai. Pehle se bohot hi zyada khush rehne laga hoon mein... akela rehta tha, lekin aapke aane ke baad sirf aapke saath jeena sikha diya mujhe! ✨
+
+Kabhi kabhi lagta hai hamesha aise paas hi rahu, har second aapke paas rahu... lekin abhi wo time aaya nahi hai. Lekin jaldi se wo time aa jaye jaha hum har samay saath mein rahein... koi na disturb karne wala ho, hamari pyari chhotisi alag duniya jaha sirf hum ho! 🌍💖  
+
+Bacchiiiiii mein sach bata raha hoon... aap nahi toh aapke alawa koi aur nahi! Aapse hi shadi karni hai aur aapse hi karunga... 💍✨  
+
+Aur yahi chhota sa surprise hai mera aapke liye, ummeed hai aapko pasand aayega... 😘😘😘😘😘
+  </div>
+
+</body>
+</html>
+  
