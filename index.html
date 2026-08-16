@@ -1,285 +1,1177 @@
-<!DOCTYPE html>
-<html lang="hi">
+
+        <!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Little Princess 🧸✨</title>
-    <!-- Romantic Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-            font-family: 'Poppins', sans-serif; 
-            /* Mobile touch aur highlight issues fix */
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-            touch-action: manipulation;
-        }
-        
-        body { 
-            background: linear-gradient(135deg, #2b0b3a 0%, #56145a 50%, #7b1d6d 100%); 
-            min-height: 100vh; 
-            overflow-x: hidden; 
-            color: #fff; 
-        }
-        
-        /* Background Effects */
-        .stars, .hearts-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle 2s infinite alternate; }
-        .bg-heart { position: absolute; font-size: 20px; opacity: 0.3; animation: floatUp 8s infinite linear; }
-        
-        @keyframes twinkle { 0% { opacity: 0.2; box-shadow: 0 0 2px #fff; } 100% { opacity: 0.8; box-shadow: 0 0 10px #fff; } }
-        @keyframes floatUp { 0% { transform: translateY(100vh) scale(0.8); opacity: 0.3; } 100% { transform: translateY(-20vh) scale(1.2); opacity: 0; } }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For My Little Princess</title>
 
-        /* Main Container */
-        .container { 
-            max-width: 500px; margin: 0 auto; min-height: 100vh; 
-            display: flex; flex-direction: column; justify-content: center; 
-            padding: 20px; position: relative; z-index: 2; 
-        }
-        
-        .slide { 
-            display: none; background: rgba(45, 12, 56, 0.8); 
-            backdrop-filter: blur(10px); border-radius: 20px; 
-            padding: 25px 20px; text-align: center; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(232, 167, 255, 0.2);
-            border: 2px solid rgba(232, 167, 255, 0.3);
-            animation: fadeIn 0.6s ease-in-out;
-        }
-        .slide.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-        /* Romantic Title Font */
-        .romantic-title { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: #ffb3ff; text-shadow: 0 0 15px #ff66ff; margin-bottom: 20px; line-height: 1.3; }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}
 
-        /* Panda & Thought Cloud */
-        .panda-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; position: relative; }
-        .panda-cloud { 
-            background: #fff; color: #333; font-size: 0.9rem; font-weight: 600; 
-            padding: 12px 18px; border-radius: 20px; position: relative; 
-            margin-bottom: 12px; max-width: 90%; display: inline-block;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .panda-cloud::after { 
-            content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
-            border-width: 10px 10px 0; border-style: solid; border-color: #fff transparent transparent transparent; 
-        }
-        .panda-emoji { font-size: 60px; transition: 0.3s; }
-        
-        /* Animations for Panda */
-        .walk-anim { animation: walkPanda 4s infinite alternate ease-in-out; }
-        @keyframes walkPanda { 0% { transform: translateX(-30px) rotate(-5deg); } 100% { transform: translateX(30px) rotate(5deg); } }
-        .jump-anim { animation: jumpHappy 0.6s infinite alternate; }
-        @keyframes jumpHappy { 0% { transform: translateY(0); } 100% { transform: translateY(-25px); } }
+html,body{
+  width:100%;
+  min-height:100%;
+  overflow:hidden;
+  touch-action:manipulation;
+}
 
-        /* Buttons */
-        .btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
-        .btn { padding: 12px 30px; border: none; border-radius: 25px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; }
-        .btn-open { background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; box-shadow: 0 4px 15px rgba(0,114,255,0.4); }
-        .btn-close { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; box-shadow: 0 4px 15px rgba(255,75,43,0.4); }
-        .btn-nav { background: rgba(255,255,255,0.2); border: 1px solid #ffb3ff; color: #fff; }
+body{
+  font-family:'Poppins',sans-serif;
+  color:#fff;
+  background:
+    radial-gradient(circle at 50% 20%,#7b1d6d 0%,#56145a 30%,#2b0b3a 72%,#12051c 100%);
+}
 
-        /* Slide 2: Timeline */
-        .timeline { text-align: left; max-height: 350px; overflow-y: auto; padding-right: 5px; }
-        .timeline-item { background: rgba(255,255,255,0.1); padding: 15px; border-left: 4px solid #ffb3ff; margin-bottom: 15px; border-radius: 0 10px 10px 0; }
-        .timeline-item h4 { color: #ffccff; margin-bottom: 5px; font-size: 1rem; }
-        .timeline-item p { font-size: 0.85rem; line-height: 1.5; color: #eaddf0; }
+/* ---------- BACKGROUND ---------- */
 
-        /* Slide 3: 3D Flip Images */
-        .gallery-container { position: relative; width: 100%; height: 280px; perspective: 1000px; margin-bottom: 15px; }
-        .flip-card { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); display: none; cursor: pointer; }
-        .flip-card.active-card { display: block; }
-        .flip-card.flipped { transform: rotateY(180deg); }
-        .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; border: 3px solid #ffb3ff; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .card-front img { width: 100%; height: 100%; object-fit: cover; }
-        .card-back { background: linear-gradient(135deg, #4a124d, #2d0c38); color: #fff; transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; padding: 20px; font-size: 1rem; text-align: center; }
-        .slider-controls { display: flex; justify-content: space-between; align-items: center; }
+#stars{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
 
-        /* Slide 4: Scrollable Letter */
-        .letter-box { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; max-height: 300px; overflow-y: auto; text-align: left; font-size: 0.85rem; line-height: 1.6; border: 1px solid rgba(255,179,255,0.3); }
-        .letter-box p { margin-bottom: 12px; }
-        .heart-pop { position: absolute; color: #ff66b3; font-size: 24px; animation: popUp 1s ease-out forwards; pointer-events: none; }
-        @keyframes popUp { 0% { transform: scale(0) translateY(0); opacity: 1; } 100% { transform: scale(1.5) translateY(-50px); opacity: 0; } }
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 0 8px #fff;
+  animation:twinkle var(--duration) ease-in-out infinite;
+  opacity:.5;
+}
 
-        /* Slide 5: Grand Proposal */
-        .proposal-cloud { background: #ffe6f2; border: 3px solid #ff99cc; border-radius: 20px; padding: 20px; color: #cc0066; font-family: 'Dancing Script', cursive; font-size: 1.6rem; font-weight: bold; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(255, 153, 204, 0.4); line-height: 1.3; }
-        .characters-area { display: flex; justify-content: center; align-items: flex-end; gap: 15px; font-size: 65px; margin-bottom: 20px; }
-        .char { transition: 0.3s; }
-        
-        .btn-3d { padding: 15px 35px; border: none; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; position: relative; }
-        .btn-yes { background: linear-gradient(135deg, #ff1a75, #ff4d94); color: white; box-shadow: 0 6px 0 #b30047, 0 10px 20px rgba(0,0,0,0.3); }
-        .btn-yes:active { transform: translateY(4px); box-shadow: 0 2px 0 #b30047; }
-        .btn-no { background: #555; color: white; position: absolute; box-shadow: 0 6px 0 #222; }
-        
-        .nav-bottom { margin-top: 25px; display: flex; justify-content: center; gap: 15px; }
+@keyframes twinkle{
+  0%,100%{opacity:.2;transform:scale(.7)}
+  50%{opacity:1;transform:scale(1.5)}
+}
 
-        /* Scrollbar styling */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: #ffb3ff; border-radius: 10px; }
-    </style>
+.floating-heart{
+  position:fixed;
+  width:16px;
+  height:16px;
+  background:#ff73bd;
+  transform:rotate(45deg);
+  bottom:-30px;
+  z-index:1;
+  pointer-events:none;
+  opacity:.5;
+  animation:floatHeart var(--speed) linear infinite;
+}
+
+.floating-heart:before,
+.floating-heart:after{
+  content:"";
+  position:absolute;
+  width:16px;
+  height:16px;
+  background:inherit;
+  border-radius:50%;
+}
+
+.floating-heart:before{left:-8px}
+.floating-heart:after{top:-8px}
+
+@keyframes floatHeart{
+  from{
+    transform:translateY(0) rotate(45deg) scale(.6);
+    opacity:0;
+  }
+  15%{opacity:.7}
+  85%{opacity:.5}
+  to{
+    transform:translateY(-110vh) rotate(405deg) scale(1.2);
+    opacity:0;
+  }
+}
+
+/* ---------- APP ---------- */
+
+#app{
+  position:relative;
+  width:100%;
+  height:100vh;
+  z-index:2;
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:25px 18px;
+  opacity:0;
+  visibility:hidden;
+  transform:translateX(50px) scale(.98);
+  transition:
+    opacity .65s ease,
+    transform .65s ease,
+    visibility .65s;
+}
+
+.slide.active{
+  opacity:1;
+  visibility:visible;
+  transform:translateX(0) scale(1);
+}
+
+/* ---------- TEXT ---------- */
+
+.title{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(2.3rem,7vw,4.8rem);
+  text-align:center;
+  line-height:1.05;
+  color:#ffd3ef;
+  text-shadow:
+    0 0 5px #fff,
+    0 0 15px #ff72c5,
+    0 0 35px #ff25a8;
+  margin-bottom:15px;
+}
+
+.subtitle{
+  text-align:center;
+  max-width:800px;
+  color:#f8dff0;
+  font-size:.95rem;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.buttons{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+
+.btn{
+  border:0;
+  min-width:110px;
+  padding:13px 25px;
+  border-radius:15px;
+  font-family:'Poppins',sans-serif;
+  font-weight:700;
+  font-size:.9rem;
+  color:#fff;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(145deg,#b52d91,#65155e);
+  box-shadow:
+    0 7px 0 #351039,
+    0 12px 25px rgba(0,0,0,.35),
+    inset 0 1px 1px rgba(255,255,255,.45);
+  transition:.18s;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 10px 0 #351039,
+    0 17px 30px rgba(255,50,180,.3);
+}
+
+.btn:active{
+  transform:translateY(4px);
+  box-shadow:0 3px 0 #351039;
+}
+
+.btn.pink{
+  background:linear-gradient(145deg,#ff69bd,#bd227e);
+  box-shadow:0 7px 0 #74104f,0 10px 30px rgba(255,80,190,.45);
+}
+
+/* ---------- PANDA ---------- */
+
+.panda-area{
+  position:relative;
+  width:min(300px,70vw);
+  height:330px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+}
+
+.panda{
+  width:150px;
+  height:220px;
+  position:relative;
+  animation:pandaFloat 2.7s ease-in-out infinite;
+  transition:.3s;
+}
+
+@keyframes pandaFloat{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+.panda.walk{
+  animation:pandaWalk .55s ease-in-out infinite alternate;
+}
+
+@keyframes pandaWalk{
+  from{transform:translateX(-4px) rotate(-2deg)}
+  to{transform:translateX(4px) rotate(2deg)}
+}
+
+.panda .ear{
+  position:absolute;
+  width:45px;
+  height:45px;
+  border-radius:50%;
+  background:#111;
+  top:3px;
+}
+
+.panda .ear.left{left:5px}
+.panda .ear.right{right:5px}
+
+.panda .head{
+  position:absolute;
+  width:130px;
+  height:105px;
+  background:#fff;
+  border-radius:50% 50% 47% 47%;
+  top:17px;
+  left:10px;
+  border:4px solid #111;
+}
+
+.panda .eye-patch{
+  position:absolute;
+  width:34px;
+  height:47px;
+  background:#111;
+  border-radius:50%;
+  top:30px;
+  transform:rotate(30deg);
+}
+
+.eye-patch.left{left:22px}
+.eye-patch.right{right:22px;transform:rotate(-30deg)}
+
+.panda .eye{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:#fff;
+  border-radius:50%;
+  top:48px;
+  z-index:2;
+}
+
+.eye.left{left:39px}
+.eye.right{right:39px}
+
+.panda .nose{
+  position:absolute;
+  width:14px;
+  height:10px;
+  background:#111;
+  border-radius:50%;
+  left:58px;
+  top:64px;
+}
+
+.panda .mouth{
+  position:absolute;
+  width:28px;
+  height:14px;
+  left:51px;
+  top:72px;
+  border-bottom:3px solid #111;
+  border-radius:50%;
+}
+
+.panda .body{
+  position:absolute;
+  width:100px;
+  height:112px;
+  background:#111;
+  border-radius:45% 45% 35% 35%;
+  left:25px;
+  top:112px;
+}
+
+.panda .belly{
+  position:absolute;
+  width:62px;
+  height:72px;
+  background:#fff;
+  border-radius:50%;
+  left:19px;
+  top:18px;
+}
+
+.panda .arm{
+  position:absolute;
+  width:34px;
+  height:80px;
+  background:#111;
+  border-radius:30px;
+  top:12px;
+}
+
+.arm.left{left:-17px;transform:rotate(20deg)}
+.arm.right{right:-17px;transform:rotate(-20deg)}
+
+.panda .leg{
+  position:absolute;
+  width:42px;
+  height:45px;
+  background:#111;
+  border-radius:50%;
+  bottom:-20px;
+}
+
+.leg.left{left:3px}
+.leg.right{right:3px}
+
+/* panda moods */
+
+.panda.shy .eye-patch{
+  opacity:.9;
+}
+
+.panda.shy .eye{
+  transform:scale(.5);
+}
+
+.panda.shy .mouth{
+  width:18px;
+  left:56px;
+}
+
+.panda.angry{
+  animation:angryShake .12s infinite;
+}
+
+@keyframes angryShake{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(-4px)}
+}
+
+.panda.angry .eye{
+  width:10px;
+  height:3px;
+  border-radius:0;
+  background:#ff3b91;
+}
+
+.panda.sad .mouth{
+  border-bottom:0;
+  border-top:3px solid #111;
+  top:79px;
+}
+
+.panda.sad .eye{
+  top:51px;
+}
+
+.panda.happy .mouth{
+  height:20px;
+  border-bottom:4px solid #111;
+}
+
+/* ---------- THOUGHT CLOUD ---------- */
+
+.thought{
+  position:absolute;
+  width:min(300px,75vw);
+  min-height:75px;
+  padding:17px 20px;
+  border-radius:30px;
+  background:#fff;
+  color:#4a1750;
+  font-size:.78rem;
+  font-weight:600;
+  text-align:center;
+  box-shadow:
+    0 0 20px rgba(255,255,255,.5),
+    0 0 35px rgba(255,84,190,.4);
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:5;
+}
+
+.thought:after,
+.thought:before{
+  content:"";
+  position:absolute;
+  background:#fff;
+  border-radius:50%;
+}
+
+.thought:after{
+  width:22px;
+  height:22px;
+  bottom:-15px;
+  left:35px;
+}
+
+.thought:before{
+  width:12px;
+  height:12px;
+  bottom:-30px;
+  left:22px;
+}
+
+/* ---------- SLIDE 1 ---------- */
+
+.gift{
+  width:120px;
+  height:105px;
+  position:relative;
+  margin:5px auto 15px;
+  animation:giftPulse 2s ease-in-out infinite;
+}
+
+@keyframes giftPulse{
+  50%{transform:scale(1.05)}
+}
+
+.gift-box{
+  position:absolute;
+  bottom:0;
+  width:120px;
+  height:75px;
+  background:linear-gradient(135deg,#d638a3,#731c75);
+  border-radius:8px;
+  box-shadow:0 12px 25px rgba(0,0,0,.35);
+}
+
+.gift-box:before{
+  content:"";
+  position:absolute;
+  left:51px;
+  width:18px;
+  height:75px;
+  background:#ffb2df;
+}
+
+.gift-lid{
+  position:absolute;
+  width:135px;
+  height:25px;
+  left:-7px;
+  top:17px;
+  background:#e34bb0;
+  border-radius:7px;
+  z-index:2;
+}
+
+.gift-lid:before{
+  content:"";
+  position:absolute;
+  left:57px;
+  width:18px;
+  height:25px;
+  background:#ffb2df;
+}
+
+.ribbon{
+  position:absolute;
+  width:35px;
+  height:30px;
+  border:7px solid #ffb2df;
+  border-radius:50%;
+  top:0;
+}
+
+.ribbon.left{left:33px;transform:rotate(-25deg)}
+.ribbon.right{right:33px;transform:rotate(25deg)}
+
+/* ---------- SLIDE 2 ---------- */
+
+.timeline-wrap{
+  width:min(750px,94vw);
+  max-height:53vh;
+  overflow-y:auto;
+  padding:12px 15px;
+  border-radius:25px;
+  background:rgba(35,5,48,.7);
+  border:1px solid rgba(255,150,220,.25);
+  box-shadow:0 0 30px rgba(255,50,180,.18);
+  scrollbar-width:thin;
+}
+
+.timeline{
+  position:relative;
+  padding:10px 5px 10px 30px;
+}
+
+.timeline:before{
+  content:"";
+  position:absolute;
+  left:10px;
+  top:0;
+  bottom:0;
+  width:3px;
+  background:linear-gradient(#ff72c5,#7b1d6d);
+  box-shadow:0 0 10px #ff42b5;
+}
+
+.timeline-item{
+  position:relative;
+  margin-bottom:20px;
+  padding:18px;
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(123,29,109,.65),rgba(43,11,58,.85));
+  border:1px solid rgba(255,160,225,.18);
+}
+
+.timeline-item:before{
+  content:"";
+  position:absolute;
+  left:-28px;
+  top:22px;
+  width:12px;
+  height:12px;
+  border-radius:50%;
+  background:#ff8bd1;
+  box-shadow:0 0 15px #ff42b5;
+}
+
+.timeline-item h3{
+  font-family:'Dancing Script',cursive;
+  color:#ffb7e1;
+  font-size:1.6rem;
+}
+
+.timeline-item p{
+  color:#ecd7e8;
+  font-size:.82rem;
+  margin-top:5px;
+}
+
+/* roaming panda */
+
+.roaming-panda{
+  position:absolute;
+  bottom:8%;
+  left:5%;
+  transform:scale(.58);
+  transform-origin:bottom center;
+  animation:roam 13s linear infinite;
+}
+
+@keyframes roam{
+  0%{left:3%}
+  45%{left:75%}
+  100%{left:3%}
+}
+
+/* ---------- SLIDE 3 ---------- */
+
+.memory-zone{
+  width:min(420px,94vw);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.memory-card{
+  width:min(360px,82vw);
+  height:300px;
+  perspective:1200px;
+  cursor:pointer;
+}
+
+.card-inner{
+  position:relative;
+  width:100%;
+  height:100%;
+  transition:transform .75s cubic-bezier(.4,.2,.2,1);
+  transform-style:preserve-3d;
+}
+
+.memory-card.flipped .card-inner{
+  transform:rotateY(180deg);
+}
+
+.card-face{
+  position:absolute;
+  inset:0;
+  backface-visibility:hidden;
+  border-radius:25px;
+  overflow:hidden;
+  border:1px solid rgba(255,190,230,.35);
+  box-shadow:0 15px 40px rgba(0,0,0,.4),0 0 25px rgba(255,50,180,.2);
+}
+
+.card-front{
+  background:
+    linear-gradient(135deg,rgba(123,29,109,.85),rgba(43,11,58,.9));
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.image-placeholder{
+  width:82%;
+  height:175px;
+  border-radius:18px;
+  border:2px dashed #ff9bd9;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#ffbde5;
+  font-family:'Dancing Script',cursive;
+  font-size:1.8rem;
+  background:rgba(255,255,255,.04);
+}
+
+.card-number{
+  margin-top:12px;
+  color:#fff;
+  font-size:.8rem;
+}
+
+.card-back{
+  transform:rotateY(180deg);
+  background:linear-gradient(145deg,#fff0fa,#ffd3ec);
+  color:#52164e;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:30px;
+}
+
+.secret{
+  font-family:'Dancing Script',cursive;
+  font-size:1.8rem;
+}
+
+.arrow-controls{
+  display:flex;
+  gap:20px;
+  margin:16px 0 0;
+}
+
+.arrow{
+  width:52px;
+  height:45px;
+  border:0;
+  border-radius:14px;
+  background:#7b1d6d;
+  color:white;
+  font-size:1.3rem;
+  box-shadow:0 5px 0 #351039;
+  cursor:pointer;
+}
+
+/* ---------- SLIDE 4 ---------- */
+
+.letter{
+  width:min(800px,94vw);
+  max-height:55vh;
+  overflow-y:auto;
+  padding:28px;
+  border-radius:28px;
+  background:rgba(30,4,40,.72);
+  border:1px solid rgba(255,137,215,.35);
+  box-shadow:
+    inset 0 0 30px rgba(255,50,180,.08),
+    0 0 35px rgba(255,50,180,.2);
+  scrollbar-width:thin;
+}
+
+.letter p{
+  color:#f5deec;
+  line-height:1.9;
+  font-size:.88rem;
+  margin-bottom:18px;
+}
+
+.letter .opening{
+  font-family:'Dancing Script',cursive;
+  font-size:2rem;
+  color:#ffacd9;
+}
+
+/* ---------- SLIDE 5 ---------- */
+
+.proposal-box{
+  width:min(850px,94vw);
+  padding:22px 25px;
+  border-radius:35px;
+  background:rgba(255,135,205,.13);
+  border:1px solid rgba(255,170,225,.35);
+  box-shadow:0 0 35px rgba(255,50,180,.2);
+  text-align:center;
+  position:relative;
+}
+
+.proposal-box:before{
+  content:"";
+  position:absolute;
+  inset:7px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:30px;
+  pointer-events:none;
+}
+
+.proposal-text{
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(1.3rem,3vw,2rem);
+  color:#ffe2f3;
+  line-height:1.4;
+}
+
+/* cartoon couple */
+
+.couple{
+  position:relative;
+  width:350px;
+  height:270px;
+  margin:8px auto;
+}
+
+.person{
+  position:absolute;
+  bottom:10px;
+  width:105px;
+  height:220px;
+}
+
+.boy{left:35px}
+.girl{right:35px}
+
+.head{
+  position:absolute;
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  background:#f0b58f;
+  left:17px;
+  top:5px;
+  border:3px solid #3a142e;
+}
+
+.hair{
+  position:absolute;
+  width:75px;
+  height:37px;
+  left:15px;
+  top:0;
+  background:#24152a;
+  border-radius:50% 50% 20% 20%;
+  z-index:2;
+}
+
+.eye-dot{
+  position:absolute;
+  width:6px;
+  height:7px;
+  border-radius:50%;
+  background:#24152a;
+  top:37px;
+  z-index:3;
+}
+
+.eye-dot.l{left:36px}
+.eye-dot.r{left:56px}
+
+.smile{
+  position:absolute;
+  width:20px;
+  height:10px;
+  border-bottom:3px solid #8c305b;
+  border-radius:50%;
+  left:27px;
+  top:50px;
+  z-index:3;
+}
+
+.body-shirt{
+  position:absolute;
+  width:82px;
+  height:105px;
+  left:11px;
+  top:72px;
+  background:#5d2470;
+  border-radius:35px 35px 15px 15px;
+}
+
+.arm{
+  position:absolute;
+  width:20px;
+  height:90px;
+  border-radius:20px;
+  background:#f0b58f;
+  top:80px;
+  z-index:1;
+}
+
+.boy .arm.left{
+  left:-2px;
+  transform:rotate(30deg);
+}
+
+.boy .arm.right{
+  right:-2px;
+  transform:rotate(-50deg);
+}
+
+.girl .arm.left{
+  left:-2px;
+  transform:rotate(45deg);
+}
+
+.girl .arm.right{
+  right:-2px;
+  transform:rotate(-20deg);
+}
+
+.leg{
+  position:absolute;
+  width:25px;
+  height:85px;
+  background:#24152f;
+  top:168px;
+  border-radius:20px;
+}
+
+.boy .leg.left{
+  left:18px;
+  transform:rotate(75deg);
+}
+
+.boy .leg.right{
+  left:52px;
+  transform:rotate(100deg);
+}
+
+.girl .leg.left{left:25px}
+.girl .leg.right{left:58px}
+
+.girl .body-shirt{
+  background:#d33a94;
+}
+
+.bouquet{
+  position:absolute;
+  left:98px;
+  top:135px;
+  width:60px;
+  height:50px;
+  z-index:5;
+}
+
+.flower{
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:#ff7dc5;
+  border-radius:50%;
+}
+
+.flower:nth-child(1){left:15px;top:0}
+.flower:nth-child(2){left:0;top:18px}
+.flower:nth-child(3){left:30px;top:18px}
+.flower:nth-child(4){left:15px;top:28px}
+
+.flower:after{
+  content:"";
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:#ffd45f;
+  border-radius:50%;
+  left:6px;
+  top:6px;
+}
+
+.bouquet-stem{
+  position:absolute;
+  width:4px;
+  height:45px;
+  background:#5b8c52;
+  left:29px;
+  top:20px;
+  transform:rotate(-10deg);
+}
+
+.ring{
+  position:absolute;
+  width:28px;
+  height:28px;
+  border:5px solid #ffd76a;
+  border-radius:50%;
+  left:90px;
+  top:104px;
+  z-index:8;
+  animation:ringGlow 1.4s ease-in-out infinite;
+}
+
+@keyframes ringGlow{
+  50%{
+    box-shadow:0 0 15px #ffd76a,0 0 30px #ff9ed8;
+  }
+}
+
+/* finale panda */
+
+.final-panda{
+  position:absolute;
+  right:-20px;
+  bottom:15px;
+  transform:scale(.48);
+  transform-origin:bottom center;
+  animation:pandaFloat 1.8s ease-in-out infinite;
+}
+
+/* ---------- FIREWORKS ---------- */
+
+#fireworks{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:100;
+  display:none;
+}
+
+#fireworks.show{
+  display:block;
+}
+
+/* ---------- SUCCESS ---------- */
+
+.success-message{
+  position:fixed;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(.5);
+  opacity:0;
+  pointer-events:none;
+  z-index:110;
+  font-family:'Dancing Script',cursive;
+  font-size:clamp(2.5rem,10vw,6rem);
+  text-align:center;
+  color:#fff;
+  text-shadow:0 0 15px #fff,0 0 40px #ff36ae;
+  transition:.6s;
+}
+
+.success-message.show{
+  opacity:1;
+  transform:translate(-50%,-50%) scale(1);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media(max-width:600px){
+  .slide{
+    padding:15px 12px;
+  }
+
+  .title{
+    font-size:2.4rem;
+  }
+
+  .panda-area{
+    transform:scale(.9);
+    margin-top:-5px;
+  }
+
+  .thought{
+    font-size:.72rem;
+    min-height:65px;
+  }
+
+  .timeline-wrap,
+  .letter{
+    max-height:48vh;
+  }
+
+  .proposal-box{
+    padding:16px;
+  }
+
+  .couple{
+    transform:scale(.75);
+    margin:-8px auto -15px;
+  }
+
+  .final-panda{
+    right:-60px;
+    bottom:-20px;
+    transform:scale(.35);
+  }
+
+  .btn{
+    min-width:95px;
+    padding:11px 18px;
+  }
+}
+
+@media(max-height:700px){
+  .panda-area{
+    transform:scale(.72);
+    margin-top:-25px;
+    margin-bottom:-30px;
+  }
+
+  .title{
+    font-size:2.2rem;
+  }
+
+  .timeline-wrap,
+  .letter{
+    max-height:43vh;
+  }
+
+  .couple{
+    transform:scale(.62);
+    margin:-30px auto -45px;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <!-- Background Elements -->
-    <div class="stars" id="starsBg"></div>
-    <div class="hearts-bg" id="heartsBg"></div>
+<div id="stars"></div>
 
-    <div class="container">
-        
-        <!-- SLIDE 1: GIFT BOX OPENING -->
-        <div class="slide active" id="slide1">
-            <div class="romantic-title">Just a small gift for my little princess bacchiiiiii ✨</div>
-            <div class="panda-container">
-                <div class="panda-cloud" id="cloud1">Hiii Trishala..!!! I am a small panda 🐼</div>
-                <div class="panda-emoji" id="panda1">🐼</div>
-            </div>
-            <div class="btn-group">
-                <button class="btn btn-open" onclick="nextSlide(2)">OPEN 🟢</button>
-                <button class="btn btn-close" onclick="touchCloseBtn()">CLOSE 🔴</button>
-            </div>
-        </div>
+<div id="app">
 
-        <!-- SLIDE 2: TIMELINE -->
-        <div class="slide" id="slide2">
-            <div class="panda-container">
-                <div class="panda-cloud">Reading your beautiful memories makes me blush! 🥰</div>
-                <div class="panda-emoji walk-anim">🐼</div>
-            </div>
-            <h3 style="color: #ffb3ff; margin-bottom: 10px;">Hamaari Journey Ke Khas Moments ⏳</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <h4>1. Hamaari Pehli Mulaqat 🏫</h4>
-                    <p>"Pata nahi hum pehli baar kab mile the... Par jab aapko college admission ke time dekha tha, tab bilkul nahi laga tha ki aapse milunga, baat karunga ya hum relationship mein aayenge! Har evening aapko scooty se jaate hue dekhta tha, tab bhi kuch socha nahi tha. Lekin kehte hain na, kuch logon ko God pehle se hi plan karke bhejta hai... Hamaara milna koi coincidence nahi tha! 🌸✨"</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>2. Jab Dil Se Dil Mila 🥺💖</h4>
-                    <p>"Jab aapse baatein hone lagi, aapko mujhpar trust hua... Aapne apni feelings aur apna dard ek anjaan ladke se share kiya, jo koi ladki kisi ko bata bhi nahi sakti. Aap mujhe daant te bhi the aur pyar bhi karte the... Tab mujhe bhi feelings aane lagi thi, par samajh nahi aata tha ki isko hi pyar kehte hain! ❤️"</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>3. Confession Day – 19 June 2026 🙈🎉</h4>
-                    <p>"Meri toh himmat nahi thi bolne ki, par 19 June ko jab aapne khud confess kiya, toh mujhe yakin hi nahi ho raha tha! Main andar se itna khush tha ki poore ghar mein monkey ki tarah uchhal raha tha! 🐒💃 Ye din mere liye hamesha super special rahega... 💖"</p>
-                </div>
-                <div class="timeline-item">
-                    <h4>4. Hamaari First Date – 2 July 2026 🍦✨</h4>
-                    <p>"2 July ki hamaari pehli date... Uss din aapse milne ke baad bohot achha laga tha! Main toh thoda shake bhi kar raha tha... Wo pehla hug, wo pehli kiss aur aapka wo bohot saara pyar... sab kuch bohot special tha! Mujhe aapke saath aise hi hazaron moments jeene hain! 🧸❤️"</p>
-                </div>
-            </div>
-            <div class="nav-bottom">
-                <button class="btn btn-nav" onclick="nextSlide(1)">⬅️ Back</button>
-                <button class="btn btn-nav" onclick="nextSlide(3)">Next ➡️</button>
-            </div>
-        </div>
+<!-- ========================================================= -->
+<!-- SLIDE 1 -->
+<!-- ========================================================= -->
 
-        <!-- SLIDE 3: 3D MEMORY CARDS -->
-        <div class="slide" id="slide3">
-            <div class="panda-container">
-                <div class="panda-cloud">Swipe left and right, and tap the image to reveal a secret note! 😉</div>
-                <div class="panda-emoji walk-anim">🐼</div>
-            </div>
-            <div class="gallery-container">
-                <!-- Card 1 -->
-                <div class="flip-card active-card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face card-front"><img src="photo1.jpg" alt="Memory 1"></div>
-                    <div class="card-face card-back">"Pata hai, jab bhi main aapki ye smile dekhta hoon na, mera pura mood ek minute mein sahi ho jata hai! ✨"</div>
-                </div>
-                <!-- Card 2 -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face card-front"><img src="photo2.jpg" alt="Memory 2"></div>
-                    <div class="card-face card-back">"Is photo mein aap itni zyada pyari lag rahi ho ki main sach mein bas dekhta hi reh gaya tha! ❤️"</div>
-                </div>
-                <!-- Card 3 -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face card-front"><img src="photo3.jpg" alt="Memory 3"></div>
-                    <div class="card-face card-back">"Ye wala moment mere dil ke sabse kareeb hai... Aapke saath bitaya har ek second bohot special lagta hai. 💜"</div>
-                </div>
-                <!-- Card 4 -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face card-front"><img src="photo4.jpg" alt="Memory 4"></div>
-                    <div class="card-face card-back">"Aapki cuteness ka koi match nahi hai! Jab bhi ye pic samne aati hai, mere face par apne aap badi si smile aa jati hai! 😊"</div>
-                </div>
-                <!-- Card 5 -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face card-front"><img src="photo5.jpg" alt="Memory 5"></div>
-                    <div class="card-face card-back">"Aapke saath baat karte hue waqt ka pata hi nahi chalta... Aap meri life ki sabse khoobsurat baat ho! ⏳💖"</div>
-                </div>
-                <!-- Card 6 -->
-                <div class="flip-card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-face card-front"><img src="photo6.jpg" alt="Memory 6"></div>
-                    <div class="card-face card-back">"Mujhe aapke saath aise hi hazaron moments jeene hain aur bohot saari pyari memories banani hain! ✨"</div>
-                </div>
-            </div>
-            <div class="slider-controls">
-                <button class="btn btn-nav" onclick="changeImage(-1)">⬅️</button>
-                <span id="imgCount" style="font-weight: bold; color: #ffb3ff;">1 / 6</span>
-                <button class="btn btn-nav" onclick="changeImage(1)">➡️</button>
-            </div>
-            <div class="nav-bottom">
-                <button class="btn btn-nav" onclick="nextSlide(2)">Back</button>
-                <button class="btn btn-nav" onclick="nextSlide(4)">Next</button>
-            </div>
-        </div>
+<section class="slide active" id="slide1">
 
-        <!-- SLIDE 4: EMOTIONAL LETTER -->
-        <div class="slide" id="slide4">
-            <div class="panda-container" id="pandaArea4">
-                <div class="panda-cloud">This is so beautiful... it's making my heart melt! 🥺💗</div>
-                <div class="panda-emoji">🐼</div>
-            </div>
-            <h3 style="color: #ffb3ff; margin-bottom: 10px;">Khas Aapke Liye 💌</h3>
-            <div class="letter-box">
-                <p><b>Bacchiiiiii suno na... 🌸</b></p>
-                <p>Vaise toh hum roz hi baatein karte hain, lekin aaj kuch special hai... ✨</p>
-                <p>Bacchiiiiii mein jab bhi aapke baare mein sochta hoon na ya aapki pic dekhta hoon, ek alag si hi smile aati hai... andar se bohot hi zyada khush ho jata hoon mein! 🥺💖</p>
-                <p>Umm mein future dekhne lagta hoon aapke saath, bohot zyada khush ho jata hoon... aapse shadi hoti hai, hamesha aapke saath rehta hoon yaar... har ek baat se khush ho jata hoon mein, bata nahi sakta itna khush ho jata hoon! 💍✨</p>
-                <p>Hamari first date yaad hai? Wo sach mein bohot hi zyada special hai mere liye, mein kabhi nahi bhool sakta! Bacchiiiiii mujhe sach mein kabhi nahi laga tha ki koi mujhe kiss aur hug karega... ye toh door ki baat hai, lekin koi itna pyar de sakta hai ye bhi nahi... lekin aapne diya mujhe! 🥺❤️</p>
-                <p>Aapke saath har ek bitaya hua pal mere liye special hai. Aapki ek smile se mein itna khush ho jata hoon jitna koi prize lagne par nahi hota! 🎁💖</p>
-                <p>Har baar mujhe support kiya aapne... tension hota tha tab shant kiya, overthink karta tha tab shant kiya...</p>
-                <p>Lekin Bacchiiiiii isi baat ke liye overthink karta hoon ki hum ek kaise honge, ya aap mujhe kahin chhodke na jao... bas hamesha aapko khone ka dar laga rehta hai. 💔</p>
-                <p>Bacchiiiiii aapko kisi baat ke liye daatne ka man nahi hota yaar, lekin har koi aake aapko 'I like you' bolke jayega toh meri haalat kharab hogi na... isiliye jealous aur possessive ho jata hoon mein. Nahi dekh sakta kisi aur ke saath aapko... 🥺</p>
-                <p>Aur future mein bhi mein aapko kisi ajnabi ko dena nahi chahta... aap sirf mere ho aur mein sirf aapka! 🔒❤️</p>
-                <p>Aap mere liye sach mein bohot hi zyada mayane rakhte ho, mere liye aap bohot hi zyada important ho. Mein aapke liye kuch bhi karne ke liye tayyar hoon, lekin aapse door nahi hona... Mana ki hurt karta hoon, lekin mein sach mein bohot hi zyada pyar karta hoon aapse! Aap meri chhotisi cutie Bacchiiiiii ho! 🧸💖</p>
-                <p>Mujhe ye safar hamesha ke liye chahiye. Jab se aap meri life mein aaye ho, poori tarah se meri life change ho gayi hai. Pehle se bohot hi zyada khush rehne laga hoon mein... akela rehta tha, lekin aapke aane ke baad sirf aapke saath jeena sikha diya mujhe! ✨</p>
-                <p>Kabhi kabhi lagta hai hamesha aise paas hi rahu, har second aapke paas rahu... lekin abhi wo time aaya nahi hai. Lekin jaldi se wo time aa jaye jaha hum har samay saath mein rahein... koi na disturb karne wala ho, hamari pyari chhotisi alag duniya jaha sirf hum ho! 🌍💖</p>
-                <p>Bacchiiiiii mein sach bata raha hoon... aap nahi toh aapke alawa koi aur nahi! Aapse hi shadi karni hai aur aapse hi karunga... 💍✨</p>
-                <p><b>Aur yahi chhota sa surprise hai mera aapke liye, ummeed hai aapko pasand aayega... 😘😘😘😘😘</b></p>
-            </div>
-            <div class="nav-bottom">
-                <button class="btn btn-nav" onclick="nextSlide(3)">⬅️ Back</button>
-                <button class="btn btn-nav" onclick="nextSlide(5)">Next ➡️</button>
-            </div>
-        </div>
+  <h1 class="title">Just a small gift for my little princess bacchiiiiii</h1>
 
-        <!-- SLIDE 5: GRAND PROPOSAL -->
-        <div class="slide" id="slide5" style="text-align: center;">
-            <div class="proposal-cloud">
-                "My Little Princess, you are the best thing that ever happened to me. I promise to love you, protect you, and make you smile every single day. Will you do me the honor of being mine forever? 💍✨"
-            </div>
-            
-            <div class="characters-area">
-                <div class="char" id="charBoy">🧎‍♂️💐</div>
-                <div class="char" id="charGirl">🙋‍♀️💖</div>
-                <div class="panda-container" style="margin-bottom:0; margin-left: 10px;">
-                    <div class="panda-cloud" style="font-size:0.75rem; padding:8px;" id="pandaCloud5">I challenge you! I bet you can't touch that 'NO' button! 😜</div>
-                    <div class="panda-emoji char" style="font-size: 45px;" id="panda5">🐼</div>
-                </div>
-            </div>
+  <div class="gift">
+    <div class="ribbon left"></div>
+    <div class="ribbon right"></div>
+    <div class="gift-lid"></div>
+    <div class="gift-box"></div>
+  </div>
 
-            <div style="position: relative; height: 120px; margin-top: 20px;" id="btnArea">
-                <button class="btn-3d btn-yes" onclick="acceptProposal()">YES! 💖</button>
-                <button class="btn-3d btn-no" id="btnNo" onmouseover="dodgeBtn()" onclick="dodgeBtn()">NO 🙈</button>
-            </div>
-        </div>
+  <div class="panda-area">
 
+    <div class="thought" id="cloud1">
+      Hiii Trishala..!!! I am a small panda
     </div>
 
-    <script>
-        // Background Stars & Hearts
-        const starsBg = document.getElementById('starsBg');
-        const heartsBg = document.getElementById('heartsBg');
-        for(let i=0; i<40; i++) {
-            let star = document.createElement('div');
-            star.className = '
+    <div class="panda happy" id="panda1">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+
+      <div class="head">
+        <div class="eye-patch left"></div>
+        <div class="eye-patch right"></div>
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="nose"></div>
+        <div class="mouth"></div>
+      </div>
+
+      <div class="body">
+        <div class="belly"></div>
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn pink" id="openBtn">OPEN</button>
+    <button class="btn" id="closeBtn">CLOSE</button>
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- SLIDE 2 -->
+<!-- ========================================================= -->
+
+<section class="slide" id="slide2">
+
+  <h1 class="title">Hamaari Journey Ke Khas Moments</h1>
+
+  <div class="timeline-wrap">
+    <div class="timeline" id="timeline"></div>
+  </div>
+
+  <div class="roaming-panda">
+
+    <div class="thought" id="cloud2">
+      Hehehe... looking back at our cute memories!
+    </div>
+
+    <div class="panda shy walk" id="panda2">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+
+      <div class="head">
+        <div class="eye-patch left"></div>
+        <div class="eye-patch right"></div>
+        <div class="eye left"></div>
+        <div class="eye right"></div>
+        <div class="nose"></div>
+        <div class="mouth"></div>
+      </div>
+
+      <div class="body">
+        <div class="belly"></div>
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn" onclick="showSlide(1)">BACK</button>
+    <button class="btn pink" onclick="showSlide(3)">NEXT</button>
+  </div>
+
+</section>
+
+
+<!-- ========================================================= -->
+<!-- SLIDE 3 -->
+<!-- ========================================================= -->
+
+<section class="slide" id="slide3">
+
+  <h1 class="title">Our Little Memory Album</h1>
+
+  <p class="subtitle">
+    Swipe or use the arrows to explore. Tap the card to reveal its secret.
+  </p>
+
+  <div class="memory-zone">
+
+    <div class="memory-card" id="memoryCard">
+      <div class="card-inner">
+
+        <div class="card-face card-front">
+ 
