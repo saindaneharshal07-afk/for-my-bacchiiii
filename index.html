@@ -3,213 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Cutie Bacchiiii 🧸✨</title>
+    <title>For My Little Princess 🧸✨</title>
+    <!-- Romantic Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         * { 
             box-sizing: border-box; 
             margin: 0; 
             padding: 0; 
             font-family: 'Poppins', sans-serif; 
-            /* Text highlight aur accidental selection block karne ke liye */
+            /* Mobile touch aur highlight issues fix */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-            -webkit-touch-callout: none;
             touch-action: manipulation;
         }
         
-        /* Romantic Purple Gradient Theme */
         body { 
-            background: linear-gradient(135deg, #1f0826 0%, #4a124d 50%, #68185c 100%); 
+            background: linear-gradient(135deg, #2b0b3a 0%, #56145a 50%, #7b1d6d 100%); 
             min-height: 100vh; 
             overflow-x: hidden; 
             color: #fff; 
         }
         
-        /* Floating Stars Background */
-        .stars { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .star { 
-            position: absolute; 
-            background: #e8a7ff; 
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); 
-            animation: floatStar 3s infinite ease-in-out alternate; 
-        }
-        @keyframes floatStar { 
-            0% { opacity: 0.2; transform: scale(0.7) translateY(0px); } 
-            100% { opacity: 0.9; transform: scale(1.3) translateY(-10px); } 
-        }
+        /* Background Effects */
+        .stars, .hearts-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .star { position: absolute; background: #fff; border-radius: 50%; animation: twinkle 2s infinite alternate; }
+        .bg-heart { position: absolute; font-size: 20px; opacity: 0.3; animation: floatUp 8s infinite linear; }
+        
+        @keyframes twinkle { 0% { opacity: 0.2; box-shadow: 0 0 2px #fff; } 100% { opacity: 0.8; box-shadow: 0 0 10px #fff; } }
+        @keyframes floatUp { 0% { transform: translateY(100vh) scale(0.8); opacity: 0.3; } 100% { transform: translateY(-20vh) scale(1.2); opacity: 0; } }
 
-        /* Container & Glassmorphism Card Slide */
+        /* Main Container */
         .container { 
-            max-width: 480px; 
-            margin: 0 auto; 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: space-between; 
-            padding: 20px 15px 90px 15px; 
-            position: relative; 
-            z-index: 2; 
+            max-width: 500px; margin: 0 auto; min-height: 100vh; 
+            display: flex; flex-direction: column; justify-content: center; 
+            padding: 20px; position: relative; z-index: 2; 
         }
         
         .slide { 
-            display: none; 
-            background: rgba(45, 12, 56, 0.75); 
-            backdrop-filter: blur(15px); 
-            -webkit-backdrop-filter: blur(15px);
-            border-radius: 24px; 
-            padding: 22px 18px; 
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(232, 167, 255, 0.2); 
-            border: 1.5px solid rgba(232, 167, 255, 0.3); 
-            text-align: center; 
+            display: none; background: rgba(45, 12, 56, 0.8); 
+            backdrop-filter: blur(10px); border-radius: 20px; 
+            padding: 25px 20px; text-align: center; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(232, 167, 255, 0.2);
+            border: 2px solid rgba(232, 167, 255, 0.3);
+            animation: fadeIn 0.6s ease-in-out;
         }
-        .slide.active { display: block; animation: slideIn 0.5s ease-out; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(15px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        .slide.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        /* Interactive Animated Bear Box */
-        .teddy-box { margin-bottom: 12px; position: relative; cursor: pointer; padding: 10px; }
-        .bear-avatar { 
-            font-size: 65px; 
-            display: inline-block; 
-            animation: floatBear 2.5s infinite ease-in-out; 
-            transition: transform 0.3s ease;
-        }
-        .bear-avatar:active { transform: scale(1.3) rotate(10deg); }
-        @keyframes floatBear { 
-            0%, 100% { transform: translateY(0) rotate(0deg); } 
-            50% { transform: translateY(-8px) rotate(-4deg); } 
-        }
+        /* Romantic Title Font */
+        .romantic-title { font-family: 'Dancing Script', cursive; font-size: 2.2rem; color: #ffb3ff; text-shadow: 0 0 15px #ff66ff; margin-bottom: 20px; line-height: 1.3; }
 
-        .speech-bubble { 
-            background: linear-gradient(135deg, #d870f5, #9c27b0); 
-            border: 2px solid #ffb3ff; 
-            padding: 10px 14px; 
-            border-radius: 18px; 
-            font-size: 0.88rem; 
-            font-weight: 600; 
-            color: #ffffff; 
-            display: inline-block; 
-            margin-bottom: 8px; 
-            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3); 
-            line-height: 1.4;
+        /* Panda & Thought Cloud */
+        .panda-container { display: flex; flex-direction: column; align-items: center; margin-bottom: 15px; position: relative; }
+        .panda-cloud { 
+            background: #fff; color: #333; font-size: 0.9rem; font-weight: 600; 
+            padding: 12px 18px; border-radius: 20px; position: relative; 
+            margin-bottom: 12px; max-width: 90%; display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-
-        .welcome-title { color: #f3bfff; font-size: 1.6rem; font-weight: bold; margin: 12px 0; text-shadow: 0 0 10px rgba(243, 191, 255, 0.5); }
+        .panda-cloud::after { 
+            content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
+            border-width: 10px 10px 0; border-style: solid; border-color: #fff transparent transparent transparent; 
+        }
+        .panda-emoji { font-size: 60px; transition: 0.3s; }
         
-        .btn-group { display: flex; justify-content: center; gap: 15px; margin-top: 20px; }
-        .btn { 
-            padding: 14px 32px; 
-            border: none; 
-            border-radius: 30px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            font-size: 1rem; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
-        }
-        .btn-open { background: linear-gradient(135deg, #11998e, #38ef7d); color: white; }
-        .btn-close { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; }
+        /* Animations for Panda */
+        .walk-anim { animation: walkPanda 4s infinite alternate ease-in-out; }
+        @keyframes walkPanda { 0% { transform: translateX(-30px) rotate(-5deg); } 100% { transform: translateX(30px) rotate(5deg); } }
+        .jump-anim { animation: jumpHappy 0.6s infinite alternate; }
+        @keyframes jumpHappy { 0% { transform: translateY(0); } 100% { transform: translateY(-25px); } }
 
-        /* Slide 2: Timeline with Full Messages */
-        .timeline { text-align: left; margin-top: 15px; max-height: 380px; overflow-y: auto; padding-right: 5px; }
-        .timeline::-webkit-scrollbar { width: 5px; }
-        .timeline::-webkit-scrollbar-thumb { background: #d870f5; border-radius: 10px; }
-        
-        .timeline-item { 
-            background: rgba(255, 255, 255, 0.08); 
-            padding: 14px; 
-            border-left: 4px solid #d870f5; 
-            margin-bottom: 12px; 
-            border-radius: 0 14px 14px 0; 
-            font-size: 0.88rem; 
-            line-height: 1.5;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        }
-        .timeline-item h4 { color: #f3bfff; margin-bottom: 6px; font-size: 0.98rem; }
-        .timeline-item p { color: #e0d0e8; }
+        /* Buttons */
+        .btn-group { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        .btn { padding: 12px 30px; border: none; border-radius: 25px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; }
+        .btn-open { background: linear-gradient(135deg, #00c6ff, #0072ff); color: white; box-shadow: 0 4px 15px rgba(0,114,255,0.4); }
+        .btn-close { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; box-shadow: 0 4px 15px rgba(255,75,43,0.4); }
+        .btn-nav { background: rgba(255,255,255,0.2); border: 1px solid #ffb3ff; color: #fff; }
 
-        /* Slide 3: Memories Slider & 3D Flip */
-        .card-container { perspective: 1000px; width: 100%; height: 330px; margin: 15px 0; position: relative; }
-        .card { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); border-radius: 18px; cursor: pointer; display: none; }
-        .card.active-card { display: block; }
-        .card.flipped { transform: rotateY(180deg); }
-        
-        .card-front, .card-back { 
-            position: absolute; width: 100%; height: 100%; 
-            backface-visibility: hidden; 
-            border-radius: 18px; overflow: hidden; 
-            border: 2px solid rgba(243, 191, 255, 0.5); 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
-        }
+        /* Slide 2: Timeline */
+        .timeline { text-align: left; max-height: 350px; overflow-y: auto; padding-right: 5px; }
+        .timeline-item { background: rgba(255,255,255,0.1); padding: 15px; border-left: 4px solid #ffb3ff; margin-bottom: 15px; border-radius: 0 10px 10px 0; }
+        .timeline-item h4 { color: #ffccff; margin-bottom: 5px; font-size: 1rem; }
+        .timeline-item p { font-size: 0.85rem; line-height: 1.5; color: #eaddf0; }
+
+        /* Slide 3: 3D Flip Images */
+        .gallery-container { position: relative; width: 100%; height: 280px; perspective: 1000px; margin-bottom: 15px; }
+        .flip-card { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); display: none; cursor: pointer; }
+        .flip-card.active-card { display: block; }
+        .flip-card.flipped { transform: rotateY(180deg); }
+        .card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 15px; border: 3px solid #ffb3ff; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .card-front img { width: 100%; height: 100%; object-fit: cover; }
+        .card-back { background: linear-gradient(135deg, #4a124d, #2d0c38); color: #fff; transform: rotateY(180deg); display: flex; align-items: center; justify-content: center; padding: 20px; font-size: 1rem; text-align: center; }
+        .slider-controls { display: flex; justify-content: space-between; align-items: center; }
+
+        /* Slide 4: Scrollable Letter */
+        .letter-box { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; max-height: 300px; overflow-y: auto; text-align: left; font-size: 0.85rem; line-height: 1.6; border: 1px solid rgba(255,179,255,0.3); }
+        .letter-box p { margin-bottom: 12px; }
+        .heart-pop { position: absolute; color: #ff66b3; font-size: 24px; animation: popUp 1s ease-out forwards; pointer-events: none; }
+        @keyframes popUp { 0% { transform: scale(0) translateY(0); opacity: 1; } 100% { transform: scale(1.5) translateY(-50px); opacity: 0; } }
+
+        /* Slide 5: Grand Proposal */
+        .proposal-cloud { background: #ffe6f2; border: 3px solid #ff99cc; border-radius: 20px; padding: 20px; color: #cc0066; font-family: 'Dancing Script', cursive; font-size: 1.6rem; font-weight: bold; margin-bottom: 20px; box-shadow: 0 10px 25px rgba(255, 153, 204, 0.4); line-height: 1.3; }
+        .characters-area { display: flex; justify-content: center; align-items: flex-end; gap: 15px; font-size: 65px; margin-bottom: 20px; }
+        .char { transition: 0.3s; }
         
-        .card-back { 
-            background: linear-gradient(135deg, #4a124d, #2d0c38); 
-            color: #f3bfff; 
-            transform: rotateY(180deg); 
-            display: flex; align-items: center; justify-content: center; 
-            padding: 20px; font-size: 0.95rem; text-align: center; 
-            font-weight: 500; line-height: 1.6;
-            box-shadow: inset 0 0 20px rgba(216, 112, 245, 0.3);
-        }
+        .btn-3d { padding: 15px 35px; border: none; border-radius: 30px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: 0.2s; position: relative; }
+        .btn-yes { background: linear-gradient(135deg, #ff1a75, #ff4d94); color: white; box-shadow: 0 6px 0 #b30047, 0 10px 20px rgba(0,0,0,0.3); }
+        .btn-yes:active { transform: translateY(4px); box-shadow: 0 2px 0 #b30047; }
+        .btn-no { background: #555; color: white; position: absolute; box-shadow: 0 6px 0 #222; }
         
-        .slider-controls { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
-        .slide-btn { background: #d870f5; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+        .nav-bottom { margin-top: 25px; display: flex; justify-content: center; gap: 15px; }
 
-        /* Slide 4: Full Romantic Uncut Letter */
-        .story-box { 
-            background: rgba(255, 255, 255, 0.07); 
-            padding: 16px; 
-            border-radius: 16px; 
-            font-size: 0.88rem; 
-            line-height: 1.6; 
-            color: #f3d9ff; 
-            max-height: 360px; 
-            overflow-y: auto; 
-            text-align: left; 
-            border: 1px solid rgba(216, 112, 245, 0.2);
-        }
-        .story-box::-webkit-scrollbar { width: 5px; }
-        .story-box::-webkit-scrollbar-thumb { background: #d870f5; border-radius: 10px; }
-        .story-box p { margin-bottom: 10px; }
-
-        /* Slide 5: Proposal */
-        .proposal-chars { font-size: 3rem; margin: 10px 0; }
-        .btn-yes { background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; font-size: 1.1rem; padding: 14px 36px; }
-        .btn-no { background: #6c757d; color: white; position: absolute; transition: 0.2s ease; }
-
-        /* Navigation Controls */
-        .nav-controls { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); display: flex; gap: 20px; z-index: 10; }
-        .nav-btn { background: rgba(31, 8, 38, 0.9); border: 2px solid #d870f5; color: #f3bfff; padding: 12px 26px; border-radius: 25px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        /* Scrollbar styling */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #ffb3ff; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="stars" id="starsContainer"></div>
+    <!-- Background Elements -->
+    <div class="stars" id="starsBg"></div>
+    <div class="hearts-bg" id="heartsBg"></div>
 
     <div class="container">
-        <!-- SLIDE 1 -->
+        
+        <!-- SLIDE 1: GIFT BOX OPENING -->
         <div class="slide active" id="slide1">
-            <div class="teddy-box" onclick="reactBear(1)">
-                <div class="speech-bubble" id="teddyText1">Hi! Welcome 💖 (Bear par tap karo reaction ke liye! 🧸) Don't tap 'CLOSE' even by mistake! 😉</div>
-                <div><span class="bear-avatar" id="teddyIcon1">🧸</span></div>
+            <div class="romantic-title">Just a small gift for my little princess bacchiiiiii ✨</div>
+            <div class="panda-container">
+                <div class="panda-cloud" id="cloud1">Hiii Trishala..!!! I am a small panda 🐼</div>
+                <div class="panda-emoji" id="panda1">🐼</div>
             </div>
-            <div class="welcome-title">For My Cutie Bacchiiii 🧸✨</div>
-            <p style="font-size: 0.88rem; color: #d8b3e6;">Aage jaane ke liye OPEN dabayein! ✨</p>
             <div class="btn-group">
-                <button class="btn btn-open" onclick="nextSlide()">OPEN 🟢</button>
-                <button class="btn btn-close" onclick="triggerAngryTeddy()">CLOSE 🔴</button>
+                <button class="btn btn-open" onclick="nextSlide(2)">OPEN 🟢</button>
+                <button class="btn btn-close" onclick="touchCloseBtn()">CLOSE 🔴</button>
             </div>
         </div>
 
         <!-- SLIDE 2: TIMELINE -->
         <div class="slide" id="slide2">
-            <div class="teddy-box" onclick="reactBear(2)">
-                <div class="speech-bubble" id="teddyText2">Hamaari pyaari journey dekho! Scroll karke pura padho ✨</div>
-                <div><span class="bear-avatar" id="teddyIcon2">🧸</span></div>
+            <div class="panda-container">
+                <div class="panda-cloud">Reading your beautiful memories makes me blush! 🥰</div>
+                <div class="panda-emoji walk-anim">🐼</div>
             </div>
-            <h3 style="color: #f3bfff; margin-bottom: 8px;">Hamaari Pyari Journey ⏳</h3>
+            <h3 style="color: #ffb3ff; margin-bottom: 10px;">Hamaari Journey Ke Khas Moments ⏳</h3>
             <div class="timeline">
                 <div class="timeline-item">
                     <h4>1. Hamaari Pehli Mulaqat 🏫</h4>
@@ -228,58 +168,69 @@
                     <p>"2 July ki hamaari pehli date... Uss din aapse milne ke baad bohot achha laga tha! Main toh thoda shake bhi kar raha tha... Wo pehla hug, wo pehli kiss aur aapka wo bohot saara pyar... sab kuch bohot special tha! Mujhe aapke saath aise hi hazaron moments jeene hain! 🧸❤️"</p>
                 </div>
             </div>
+            <div class="nav-bottom">
+                <button class="btn btn-nav" onclick="nextSlide(1)">⬅️ Back</button>
+                <button class="btn btn-nav" onclick="nextSlide(3)">Next ➡️</button>
+            </div>
         </div>
 
-        <!-- SLIDE 3: MEMORIES -->
+        <!-- SLIDE 3: 3D MEMORY CARDS -->
         <div class="slide" id="slide3">
-            <div class="teddy-box" onclick="reactBear(3)">
-                <div class="speech-bubble" id="teddyText3">Photo par tap karke mera hidden message padho! 🪄✨</div>
-                <div><span class="bear-avatar" id="teddyIcon3">🧸</span></div>
+            <div class="panda-container">
+                <div class="panda-cloud">Swipe left and right, and tap the image to reveal a secret note! 😉</div>
+                <div class="panda-emoji walk-anim">🐼</div>
             </div>
-            <h3 style="color: #f3bfff;">Memories 🖼️</h3>
-            
-            <div class="card-container">
-                <div class="card active-card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front"><img src="photo1.jpg" alt="Memory 1"></div>
-                    <div class="card-back">"Pata hai, jab bhi main aapki ye smile dekhta hoon na, mera pura mood ek minute mein sahi ho jata hai! ✨"</div>
+            <div class="gallery-container">
+                <!-- Card 1 -->
+                <div class="flip-card active-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front"><img src="photo1.jpg" alt="Memory 1"></div>
+                    <div class="card-face card-back">"Pata hai, jab bhi main aapki ye smile dekhta hoon na, mera pura mood ek minute mein sahi ho jata hai! ✨"</div>
                 </div>
-                <div class="card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front"><img src="photo2.jpg" alt="Memory 2"></div>
-                    <div class="card-back">"Is photo mein aap itni zyada pyari lag rahi ho ki main sach mein bas dekhta hi reh gaya tha! ❤️"</div>
+                <!-- Card 2 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front"><img src="photo2.jpg" alt="Memory 2"></div>
+                    <div class="card-face card-back">"Is photo mein aap itni zyada pyari lag rahi ho ki main sach mein bas dekhta hi reh gaya tha! ❤️"</div>
                 </div>
-                <div class="card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front"><img src="photo3.jpg" alt="Memory 3"></div>
-                    <div class="card-back">"Ye wala moment mere dil ke sabse kareeb hai... Aapke saath bitaya har ek second bohot special lagta hai. 💜"</div>
+                <!-- Card 3 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front"><img src="photo3.jpg" alt="Memory 3"></div>
+                    <div class="card-face card-back">"Ye wala moment mere dil ke sabse kareeb hai... Aapke saath bitaya har ek second bohot special lagta hai. 💜"</div>
                 </div>
-                <div class="card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front"><img src="photo4.jpg" alt="Memory 4"></div>
-                    <div class="card-back">"Aapki cuteness ka koi match nahi hai! Jab bhi ye pic samne aati hai, mere face par apne aap badi si smile aa jati hai! 😊"</div>
+                <!-- Card 4 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front"><img src="photo4.jpg" alt="Memory 4"></div>
+                    <div class="card-face card-back">"Aapki cuteness ka koi match nahi hai! Jab bhi ye pic samne aati hai, mere face par apne aap badi si smile aa jati hai! 😊"</div>
                 </div>
-                <div class="card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front"><img src="photo5.jpg" alt="Memory 5"></div>
-                    <div class="card-back">"Aapke saath baat karte hue waqt ka pata hi nahi chalta... Aap meri life ki sabse khoobsurat baat ho! ⏳💖"</div>
+                <!-- Card 5 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front"><img src="photo5.jpg" alt="Memory 5"></div>
+                    <div class="card-face card-back">"Aapke saath baat karte hue waqt ka pata hi nahi chalta... Aap meri life ki sabse khoobsurat baat ho! ⏳💖"</div>
                 </div>
-                <div class="card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-front"><img src="photo6.jpg" alt="Memory 6"></div>
-                    <div class="card-back">"Mujhe aapke saath aise hi hazaron moments jeene hain aur bohot saari pyari memories banani hain! ✨"</div>
+                <!-- Card 6 -->
+                <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                    <div class="card-face card-front"><img src="photo6.jpg" alt="Memory 6"></div>
+                    <div class="card-face card-back">"Mujhe aapke saath aise hi hazaron moments jeene hain aur bohot saari pyari memories banani hain! ✨"</div>
                 </div>
             </div>
-
             <div class="slider-controls">
-                <button class="slide-btn" onclick="prevCard()">⬅️ Prev</button>
-                <span id="cardCounter" style="font-size: 0.88rem; font-weight: bold; color: #f3bfff;">1 / 6</span>
-                <button class="slide-btn" onclick="nextCard()">Next ➡️</button>
+                <button class="btn btn-nav" onclick="changeImage(-1)">⬅️</button>
+                <span id="imgCount" style="font-weight: bold; color: #ffb3ff;">1 / 6</span>
+                <button class="btn btn-nav" onclick="changeImage(1)">➡️</button>
+            </div>
+            <div class="nav-bottom">
+                <button class="btn btn-nav" onclick="nextSlide(2)">Back</button>
+                <button class="btn btn-nav" onclick="nextSlide(4)">Next</button>
             </div>
         </div>
 
-        <!-- SLIDE 4: LETTER -->
+        <!-- SLIDE 4: EMOTIONAL LETTER -->
         <div class="slide" id="slide4">
-            <div class="teddy-box" onclick="reactBear(4)">
-                <div class="speech-bubble" id="teddyText4">Listening quietly to your beautiful story... 🥺💌</div>
-                <div><span class="bear-avatar" id="teddyIcon4">🧸</span></div>
+            <div class="panda-container" id="pandaArea4">
+                <div class="panda-cloud">This is so beautiful... it's making my heart melt! 🥺💗</div>
+                <div class="panda-emoji">🐼</div>
             </div>
-            <h3 style="color: #f3bfff; margin-bottom: 10px;">Khas Aapke Liye 💌</h3>
-            <div class="story-box">
+            <h3 style="color: #ffb3ff; margin-bottom: 10px;">Khas Aapke Liye 💌</h3>
+            <div class="letter-box">
                 <p><b>Bacchiiiiii suno na... 🌸</b></p>
                 <p>Vaise toh hum roz hi baatein karte hain, lekin aaj kuch special hai... ✨</p>
                 <p>Bacchiiiiii mein jab bhi aapke baare mein sochta hoon na ya aapki pic dekhta hoon, ek alag si hi smile aati hai... andar se bohot hi zyada khush ho jata hoon mein! 🥺💖</p>
@@ -296,53 +247,39 @@
                 <p>Bacchiiiiii mein sach bata raha hoon... aap nahi toh aapke alawa koi aur nahi! Aapse hi shadi karni hai aur aapse hi karunga... 💍✨</p>
                 <p><b>Aur yahi chhota sa surprise hai mera aapke liye, ummeed hai aapko pasand aayega... 😘😘😘😘😘</b></p>
             </div>
+            <div class="nav-bottom">
+                <button class="btn btn-nav" onclick="nextSlide(3)">⬅️ Back</button>
+                <button class="btn btn-nav" onclick="nextSlide(5)">Next ➡️</button>
+            </div>
         </div>
 
-        <!-- SLIDE 5: PROPOSAL -->
-        <div class="slide" id="slide5">
-            <div class="teddy-box" onclick="reactBear(5)">
-                <div class="speech-bubble" id="teddyText5">I challenge you! Try to tap the 'NO' button if you can! 😈</div>
-                <div><span class="bear-avatar" id="teddyIcon5">🧸🎉</span></div>
+        <!-- SLIDE 5: GRAND PROPOSAL -->
+        <div class="slide" id="slide5" style="text-align: center;">
+            <div class="proposal-cloud">
+                "My Little Princess, you are the best thing that ever happened to me. I promise to love you, protect you, and make you smile every single day. Will you do me the honor of being mine forever? 💍✨"
             </div>
-            <div class="proposal-chars">👩‍❤️‍👨</div>
-            <h2 style="color: #f3bfff;">Will You Stay With Me Forever? 💍✨</h2>
-            <p style="margin: 10px 0; font-size: 0.95rem; color: #e8a7ff;">Ur my Pyari Bacchiiii! ❤️</p>
             
-            <div class="btn-group" style="position: relative; height: 100px; margin-top: 20px;">
-                <button class="btn btn-yes" onclick="celebrate()">YES! 💍💖</button>
-                <button class="btn btn-no" id="noBtn" onmouseover="dodgeNo()" onclick="dodgeNo()">NO 🙈</button>
+            <div class="characters-area">
+                <div class="char" id="charBoy">🧎‍♂️💐</div>
+                <div class="char" id="charGirl">🙋‍♀️💖</div>
+                <div class="panda-container" style="margin-bottom:0; margin-left: 10px;">
+                    <div class="panda-cloud" style="font-size:0.75rem; padding:8px;" id="pandaCloud5">I challenge you! I bet you can't touch that 'NO' button! 😜</div>
+                    <div class="panda-emoji char" style="font-size: 45px;" id="panda5">🐼</div>
+                </div>
+            </div>
+
+            <div style="position: relative; height: 120px; margin-top: 20px;" id="btnArea">
+                <button class="btn-3d btn-yes" onclick="acceptProposal()">YES! 💖</button>
+                <button class="btn-3d btn-no" id="btnNo" onmouseover="dodgeBtn()" onclick="dodgeBtn()">NO 🙈</button>
             </div>
         </div>
 
-        <!-- Global Navigation -->
-        <div class="nav-controls">
-            <button class="nav-btn" onclick="prevSlide()">⬅️ Back</button>
-            <button class="nav-btn" onclick="nextSlide()">Next ➡️</button>
-        </div>
     </div>
 
     <script>
-        // Background Stars Generator
-        const starsContainer = document.getElementById('starsContainer');
-        for(let i=0; i<35; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.width = Math.random() * 8 + 4 + 'px';
-            star.style.height = star.style.width;
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            starsContainer.appendChild(star);
-        }
-
-        // Slide Navigation
-        let currentSlide = 1;
-        const totalSlides = 5;
-
-        function showSlide(n) {
-            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            document.getElementById(`slide${n}`).classList.add('active');
-        }
-
-        function nextSlide() {
-            if (currentSlide < totalSlides) { currentSlide++; showSlide(currentS
+        // Background Stars & Hearts
+        const starsBg = document.getElementById('starsBg');
+        const heartsBg = document.getElementById('heartsBg');
+        for(let i=0; i<40; i++) {
+            let star = document.createElement('div');
+            star.className = '
