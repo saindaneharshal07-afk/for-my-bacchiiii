@@ -1,1049 +1,1073 @@
-
-        <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>For My Little Princess</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root{
+  --deep:#2b0b3a;
+  --mid:#56145a;
+  --pink:#7b1d6d;
+  --soft:#ff8bd8;
+  --white:#fff;
+  --shadow:0 20px 55px rgba(0,0,0,.38);
+}
+
 *{
   box-sizing:border-box;
-  margin:0;
-  padding:0;
-  -webkit-tap-highlight-color:transparent;
   user-select:none;
+  -webkit-user-select:none;
+  -webkit-touch-callout:none;
+  -webkit-tap-highlight-color:transparent;
 }
 
 html,body{
-  width:100%;
+  margin:0;
   min-height:100%;
-  overflow:hidden;
+  background:var(--deep);
+  color:#fff;
+  font-family:Poppins,sans-serif;
   touch-action:manipulation;
+  overflow:hidden;
 }
 
 body{
-  font-family:'Poppins',sans-serif;
-  color:#fff;
-  background:
-    radial-gradient(circle at 50% 20%,#7b1d6d 0%,#56145a 30%,#2b0b3a 72%,#12051c 100%);
+  min-height:100svh;
 }
 
-/* ---------- BACKGROUND ---------- */
+button{
+  font:inherit;
+  touch-action:manipulation;
+}
 
-#stars{
+button,input{
+  user-select:none;
+  -webkit-user-select:none;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+#sky{
   position:fixed;
   inset:0;
-  z-index:0;
+  overflow:hidden;
   pointer-events:none;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(123,29,109,.55),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 15% 85%,
+      rgba(86,20,90,.8),
+      transparent 45%
+    ),
+    linear-gradient(
+      135deg,
+      var(--deep),
+      #16051f 80%
+    );
+  z-index:0;
 }
 
 .star{
   position:absolute;
-  width:2px;
-  height:2px;
+  width:3px;
+  height:3px;
   border-radius:50%;
   background:#fff;
-  box-shadow:0 0 8px #fff;
-  animation:twinkle var(--duration) ease-in-out infinite;
-  opacity:.5;
+  box-shadow:0 0 9px 2px rgba(255,255,255,.8);
+  animation:twinkle var(--d) ease-in-out infinite alternate;
 }
 
 @keyframes twinkle{
-  0%,100%{opacity:.2;transform:scale(.7)}
-  50%{opacity:1;transform:scale(1.5)}
+  from{
+    opacity:.18;
+    transform:scale(.6);
+  }
+  to{
+    opacity:1;
+    transform:scale(1.35);
+  }
 }
 
-.floating-heart{
+/* =========================
+   FLOATING HEARTS
+========================= */
+
+.heart{
   position:fixed;
-  width:16px;
-  height:16px;
-  background:#ff73bd;
-  transform:rotate(45deg);
-  bottom:-30px;
-  z-index:1;
+  bottom:-40px;
+  width:18px;
+  height:18px;
+  transform:rotate(-45deg);
+  background:rgba(255,126,215,.65);
+  box-shadow:0 0 18px rgba(255,126,215,.45);
   pointer-events:none;
-  opacity:.5;
-  animation:floatHeart var(--speed) linear infinite;
+  z-index:2;
+  animation:floatHeart var(--dur) linear forwards;
 }
 
-.floating-heart:before,
-.floating-heart:after{
+.heart:before,
+.heart:after{
   content:"";
   position:absolute;
-  width:16px;
-  height:16px;
-  background:inherit;
+  width:18px;
+  height:18px;
   border-radius:50%;
+  background:inherit;
 }
 
-.floating-heart:before{left:-8px}
-.floating-heart:after{top:-8px}
+.heart:before{
+  top:-9px;
+  left:0;
+}
+
+.heart:after{
+  left:9px;
+  top:0;
+}
 
 @keyframes floatHeart{
-  from{
-    transform:translateY(0) rotate(45deg) scale(.6);
+  0%{
     opacity:0;
+    transform:translateY(0) rotate(-45deg) scale(.6);
   }
-  15%{opacity:.7}
-  85%{opacity:.5}
-  to{
-    transform:translateY(-110vh) rotate(405deg) scale(1.2);
+
+  10%{
+    opacity:.85;
+  }
+
+  100%{
     opacity:0;
+    transform:
+      translate(var(--x),-110vh)
+      rotate(315deg)
+      scale(1.2);
   }
 }
 
-/* ---------- APP ---------- */
+/* =========================
+   APP / SLIDES
+========================= */
 
 #app{
   position:relative;
+  z-index:3;
   width:100%;
-  height:100vh;
-  z-index:2;
+  height:100svh;
 }
 
 .slide{
   position:absolute;
   inset:0;
+  padding:clamp(16px,3vw,36px);
+
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
-  padding:25px 18px;
+
   opacity:0;
   visibility:hidden;
-  transform:translateX(50px) scale(.98);
+  transform:translateX(8%);
+
   transition:
     opacity .65s ease,
-    transform .65s ease,
-    visibility .65s;
+    transform .65s cubic-bezier(.2,.8,.2,1);
+
+  overflow:auto;
+  overscroll-behavior:contain;
 }
 
 .slide.active{
   opacity:1;
   visibility:visible;
-  transform:translateX(0) scale(1);
+  transform:translateX(0);
 }
 
-/* ---------- TEXT ---------- */
+.slide.exit{
+  transform:translateX(-8%);
+}
 
-.title{
-  font-family:'Dancing Script',cursive;
-  font-size:clamp(2.3rem,7vw,4.8rem);
+h1,
+h2,
+h3{
+  font-family:"Dancing Script",cursive;
+  margin:0;
   text-align:center;
+  text-shadow:0 0 18px rgba(255,139,216,.55);
+}
+
+h1{
+  font-size:clamp(2.1rem,6vw,4.6rem);
   line-height:1.05;
-  color:#ffd3ef;
-  text-shadow:
-    0 0 5px #fff,
-    0 0 15px #ff72c5,
-    0 0 35px #ff25a8;
-  margin-bottom:15px;
+}
+
+h2{
+  font-size:clamp(2rem,5vw,3.6rem);
+}
+
+p{
+  line-height:1.8;
 }
 
 .subtitle{
+  opacity:.9;
   text-align:center;
   max-width:800px;
-  color:#f8dff0;
-  font-size:.95rem;
 }
 
-/* ---------- BUTTONS ---------- */
+/* =========================
+   BUTTONS
+========================= */
 
-.buttons{
+.btn-row{
   display:flex;
   gap:14px;
   justify-content:center;
   flex-wrap:wrap;
-  margin-top:20px;
+  margin-top:22px;
+  position:relative;
+  z-index:20;
 }
 
 .btn{
-  border:0;
-  min-width:110px;
-  padding:13px 25px;
-  border-radius:15px;
-  font-family:'Poppins',sans-serif;
-  font-weight:700;
-  font-size:.9rem;
+  border:1px solid rgba(255,255,255,.3);
   color:#fff;
+  padding:12px 25px;
+  border-radius:16px;
   cursor:pointer;
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(145deg,#b52d91,#65155e);
+  font-weight:700;
+
+  background:
+    linear-gradient(
+      145deg,
+      #a32a8f,
+      #56145a
+    );
+
   box-shadow:
-    0 7px 0 #351039,
-    0 12px 25px rgba(0,0,0,.35),
-    inset 0 1px 1px rgba(255,255,255,.45);
-  transition:.18s;
+    0 7px 0 #2b0b3a,
+    0 13px 28px rgba(0,0,0,.35),
+    0 0 20px rgba(255,100,210,.2);
+
+  transition:
+    transform .15s,
+    box-shadow .15s,
+    filter .2s;
 }
 
 .btn:hover{
   transform:translateY(-3px);
-  box-shadow:
-    0 10px 0 #351039,
-    0 17px 30px rgba(255,50,180,.3);
+  filter:brightness(1.12);
 }
 
 .btn:active{
   transform:translateY(4px);
-  box-shadow:0 3px 0 #351039;
+
+  box-shadow:
+    0 3px 0 #2b0b3a,
+    0 7px 16px rgba(0,0,0,.3);
 }
 
 .btn.pink{
-  background:linear-gradient(145deg,#ff69bd,#bd227e);
-  box-shadow:0 7px 0 #74104f,0 10px 30px rgba(255,80,190,.45);
+  background:
+    linear-gradient(
+      145deg,
+      #ff7ad4,
+      #a51d82
+    );
 }
 
-/* ---------- PANDA ---------- */
-
-.panda-area{
-  position:relative;
-  width:min(300px,70vw);
-  height:330px;
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
+.btn.ghost{
+  background:rgba(255,255,255,.09);
 }
 
-.panda{
-  width:150px;
-  height:220px;
-  position:relative;
-  animation:pandaFloat 2.7s ease-in-out infinite;
-  transition:.3s;
-}
+/* =========================
+   GLASS
+========================= */
 
-@keyframes pandaFloat{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
+.glass{
+  width:min(100%,900px);
 
-.panda.walk{
-  animation:pandaWalk .55s ease-in-out infinite alternate;
-}
+  background:rgba(48,5,63,.64);
 
-@keyframes pandaWalk{
-  from{transform:translateX(-4px) rotate(-2deg)}
-  to{transform:translateX(4px) rotate(2deg)}
-}
+  border:
+    1px solid
+    rgba(255,155,225,.23);
 
-.panda .ear{
-  position:absolute;
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  background:#111;
-  top:3px;
-}
+  border-radius:28px;
 
-.panda .ear.left{left:5px}
-.panda .ear.right{right:5px}
-
-.panda .head{
-  position:absolute;
-  width:130px;
-  height:105px;
-  background:#fff;
-  border-radius:50% 50% 47% 47%;
-  top:17px;
-  left:10px;
-  border:4px solid #111;
-}
-
-.panda .eye-patch{
-  position:absolute;
-  width:34px;
-  height:47px;
-  background:#111;
-  border-radius:50%;
-  top:30px;
-  transform:rotate(30deg);
-}
-
-.eye-patch.left{left:22px}
-.eye-patch.right{right:22px;transform:rotate(-30deg)}
-
-.panda .eye{
-  position:absolute;
-  width:8px;
-  height:8px;
-  background:#fff;
-  border-radius:50%;
-  top:48px;
-  z-index:2;
-}
-
-.eye.left{left:39px}
-.eye.right{right:39px}
-
-.panda .nose{
-  position:absolute;
-  width:14px;
-  height:10px;
-  background:#111;
-  border-radius:50%;
-  left:58px;
-  top:64px;
-}
-
-.panda .mouth{
-  position:absolute;
-  width:28px;
-  height:14px;
-  left:51px;
-  top:72px;
-  border-bottom:3px solid #111;
-  border-radius:50%;
-}
-
-.panda .body{
-  position:absolute;
-  width:100px;
-  height:112px;
-  background:#111;
-  border-radius:45% 45% 35% 35%;
-  left:25px;
-  top:112px;
-}
-
-.panda .belly{
-  position:absolute;
-  width:62px;
-  height:72px;
-  background:#fff;
-  border-radius:50%;
-  left:19px;
-  top:18px;
-}
-
-.panda .arm{
-  position:absolute;
-  width:34px;
-  height:80px;
-  background:#111;
-  border-radius:30px;
-  top:12px;
-}
-
-.arm.left{left:-17px;transform:rotate(20deg)}
-.arm.right{right:-17px;transform:rotate(-20deg)}
-
-.panda .leg{
-  position:absolute;
-  width:42px;
-  height:45px;
-  background:#111;
-  border-radius:50%;
-  bottom:-20px;
-}
-
-.leg.left{left:3px}
-.leg.right{right:3px}
-
-/* panda moods */
-
-.panda.shy .eye-patch{
-  opacity:.9;
-}
-
-.panda.shy .eye{
-  transform:scale(.5);
-}
-
-.panda.shy .mouth{
-  width:18px;
-  left:56px;
-}
-
-.panda.angry{
-  animation:angryShake .12s infinite;
-}
-
-@keyframes angryShake{
-  0%,100%{transform:translateX(0)}
-  50%{transform:translateX(-4px)}
-}
-
-.panda.angry .eye{
-  width:10px;
-  height:3px;
-  border-radius:0;
-  background:#ff3b91;
-}
-
-.panda.sad .mouth{
-  border-bottom:0;
-  border-top:3px solid #111;
-  top:79px;
-}
-
-.panda.sad .eye{
-  top:51px;
-}
-
-.panda.happy .mouth{
-  height:20px;
-  border-bottom:4px solid #111;
-}
-
-/* ---------- THOUGHT CLOUD ---------- */
-
-.thought{
-  position:absolute;
-  width:min(300px,75vw);
-  min-height:75px;
-  padding:17px 20px;
-  border-radius:30px;
-  background:#fff;
-  color:#4a1750;
-  font-size:.78rem;
-  font-weight:600;
-  text-align:center;
   box-shadow:
-    0 0 20px rgba(255,255,255,.5),
-    0 0 35px rgba(255,84,190,.4);
-  top:0;
-  left:50%;
-  transform:translateX(-50%);
-  z-index:5;
+    var(--shadow),
+    inset 0 0 35px rgba(255,100,210,.06);
+
+  backdrop-filter:blur(12px);
 }
 
-.thought:after,
-.thought:before{
-  content:"";
-  position:absolute;
-  background:#fff;
-  border-radius:50%;
-}
+/* =========================
+   SLIDE 1
+========================= */
 
-.thought:after{
-  width:22px;
-  height:22px;
-  bottom:-15px;
-  left:35px;
+#slide1{
+  justify-content:center;
+  gap:18px;
 }
-
-.thought:before{
-  width:12px;
-  height:12px;
-  bottom:-30px;
-  left:22px;
-}
-
-/* ---------- SLIDE 1 ---------- */
 
 .gift{
-  width:120px;
-  height:105px;
+  width:min(240px,50vw);
+  aspect-ratio:1;
   position:relative;
-  margin:5px auto 15px;
-  animation:giftPulse 2s ease-in-out infinite;
-}
-
-@keyframes giftPulse{
-  50%{transform:scale(1.05)}
+  margin:8px auto 12px;
+  cursor:pointer;
+  animation:giftFloat 3s ease-in-out infinite;
 }
 
 .gift-box{
   position:absolute;
-  bottom:0;
-  width:120px;
-  height:75px;
-  background:linear-gradient(135deg,#d638a3,#731c75);
-  border-radius:8px;
-  box-shadow:0 12px 25px rgba(0,0,0,.35);
+  left:10%;
+  right:10%;
+  bottom:10%;
+  height:55%;
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #9e2a91,
+      #56145a
+    );
+
+  box-shadow:
+    0 22px 35px rgba(0,0,0,.38),
+    0 0 28px rgba(255,94,210,.3);
 }
 
 .gift-box:before{
   content:"";
   position:absolute;
-  left:51px;
-  width:18px;
-  height:75px;
-  background:#ffb2df;
+  left:42%;
+  width:16%;
+  top:0;
+  bottom:0;
+  background:#ff78d0;
 }
 
 .gift-lid{
   position:absolute;
-  width:135px;
-  height:25px;
-  left:-7px;
-  top:17px;
-  background:#e34bb0;
-  border-radius:7px;
-  z-index:2;
+  left:5%;
+  right:5%;
+  top:25%;
+  height:18%;
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #c448a9,
+      #7b1d6d
+    );
+
+  box-shadow:0 8px 18px rgba(0,0,0,.3);
 }
 
-.gift-lid:before{
+.gift-lid:after{
   content:"";
   position:absolute;
-  left:57px;
-  width:18px;
-  height:25px;
-  background:#ffb2df;
+  top:-30%;
+  left:47%;
+  width:6%;
+  height:60%;
+  background:#ff78d0;
+  border-radius:4px;
 }
 
-.ribbon{
+@keyframes giftFloat{
+  50%{
+    transform:translateY(-8px);
+  }
+}
+
+/* =========================
+   IMAGE CHARACTERS
+========================= */
+
+.panda-wrap{
+  position:relative;
+  width:min(210px,42vw);
+  margin:5px auto;
+
+  display:flex;
+  justify-content:center;
+
+  animation:
+    pandaBob
+    2.8s
+    ease-in-out
+    infinite;
+}
+
+.panda-img{
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:270px;
+  object-fit:contain;
+
+  filter:
+    drop-shadow(
+      0 12px 18px
+      rgba(0,0,0,.35)
+    );
+}
+
+@keyframes pandaBob{
+  50%{
+    transform:
+      translateY(-9px)
+      rotate(1deg);
+  }
+}
+
+.thought{
+  position:relative;
+
+  background:#fff;
+  color:#3b123f;
+
+  padding:15px 19px;
+
+  border-radius:24px;
+
+  max-width:min(440px,90vw);
+
+  text-align:center;
+
+  font-size:.92rem;
+  font-weight:600;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.3);
+
+  margin:0 auto 6px;
+}
+
+.thought:after{
+  content:"";
+
   position:absolute;
-  width:35px;
-  height:30px;
-  border:7px solid #ffb2df;
+
+  left:22%;
+  bottom:-15px;
+
+  width:22px;
+  height:22px;
+
+  background:#fff;
   border-radius:50%;
-  top:0;
+
+  box-shadow:
+    0 22px 0 -5px #fff;
 }
 
-.ribbon.left{left:33px;transform:rotate(-25deg)}
-.ribbon.right{right:33px;transform:rotate(25deg)}
+#moodPanda{
+  min-height:150px;
+}
 
-/* ---------- SLIDE 2 ---------- */
+.mood-sad{
+  filter:
+    drop-shadow(
+      0 12px 18px
+      rgba(0,0,0,.35)
+    )
+    saturate(.65);
+}
 
-.timeline-wrap{
-  width:min(750px,94vw);
-  max-height:53vh;
-  overflow-y:auto;
-  padding:12px 15px;
-  border-radius:25px;
-  background:rgba(35,5,48,.7);
-  border:1px solid rgba(255,150,220,.25);
-  box-shadow:0 0 30px rgba(255,50,180,.18);
-  scrollbar-width:thin;
+.mood-angry{
+  filter:
+    drop-shadow(
+      0 12px 18px
+      rgba(255,40,80,.45)
+    )
+    saturate(1.3);
+}
+
+/* =========================
+   SLIDE 2
+========================= */
+
+#slide2{
+  gap:18px;
 }
 
 .timeline{
-  position:relative;
-  padding:10px 5px 10px 30px;
-}
-
-.timeline:before{
-  content:"";
-  position:absolute;
-  left:10px;
-  top:0;
-  bottom:0;
-  width:3px;
-  background:linear-gradient(#ff72c5,#7b1d6d);
-  box-shadow:0 0 10px #ff42b5;
+  width:min(100%,920px);
+  max-height:58svh;
+  overflow:auto;
+  padding:24px;
+  scrollbar-width:thin;
 }
 
 .timeline-item{
   position:relative;
-  margin-bottom:20px;
-  padding:18px;
-  border-radius:18px;
-  background:linear-gradient(135deg,rgba(123,29,109,.65),rgba(43,11,58,.85));
-  border:1px solid rgba(255,160,225,.18);
+
+  padding:20px 22px;
+  margin:0 0 17px;
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(123,29,109,.72),
+      rgba(43,11,58,.8)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.12);
+}
+
+.timeline-item:last-child{
+  margin-bottom:0;
 }
 
 .timeline-item:before{
   content:"";
+
   position:absolute;
-  left:-28px;
-  top:22px;
-  width:12px;
-  height:12px;
+  left:-7px;
+  top:25px;
+
+  width:14px;
+  height:14px;
+
   border-radius:50%;
-  background:#ff8bd1;
-  box-shadow:0 0 15px #ff42b5;
+
+  background:#ff8bd8;
+
+  box-shadow:
+    0 0 15px #ff8bd8;
 }
 
 .timeline-item h3{
-  font-family:'Dancing Script',cursive;
-  color:#ffb7e1;
-  font-size:1.6rem;
+  text-align:left;
+  font-size:1.65rem;
+  margin-bottom:8px;
 }
 
 .timeline-item p{
-  color:#ecd7e8;
-  font-size:.82rem;
-  margin-top:5px;
+  margin:0;
+  font-size:.92rem;
 }
 
-/* roaming panda */
-
-.roaming-panda{
-  position:absolute;
-  bottom:8%;
-  left:5%;
-  transform:scale(.58);
-  transform-origin:bottom center;
-  animation:roam 13s linear infinite;
+.slide-nav{
+  margin-top:auto;
+  padding-top:14px;
+  position:sticky;
+  bottom:0;
 }
 
-@keyframes roam{
-  0%{left:3%}
-  45%{left:75%}
-  100%{left:3%}
+/* =========================
+   SLIDE 3
+========================= */
+
+#slide3{
+  gap:16px;
 }
 
-/* ---------- SLIDE 3 ---------- */
+.album{
+  width:min(520px,92vw);
+  aspect-ratio:4/3;
+  height:auto;
 
-.memory-zone{
-  width:min(420px,94vw);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-.memory-card{
-  width:min(360px,82vw);
-  height:300px;
   perspective:1200px;
+
+  touch-action:pan-y;
   cursor:pointer;
 }
 
-.card-inner{
+.flip-card{
   position:relative;
+
   width:100%;
   height:100%;
-  transition:transform .75s cubic-bezier(.4,.2,.2,1);
+
   transform-style:preserve-3d;
+
+  transition:
+    transform .75s
+    cubic-bezier(.2,.7,.2,1);
+
+  isolation:isolate;
 }
 
-.memory-card.flipped .card-inner{
+.album.flipped .flip-card{
   transform:rotateY(180deg);
 }
 
-.card-face{
+/*
+  IMPORTANT:
+  Every face is the containing block.
+  The image is absolute and cannot drift.
+*/
+
+.memory-face{
   position:absolute;
   inset:0;
+
   backface-visibility:hidden;
-  border-radius:25px;
+  -webkit-backface-visibility:hidden;
+
   overflow:hidden;
-  border:1px solid rgba(255,190,230,.35);
-  box-shadow:0 15px 40px rgba(0,0,0,.4),0 0 25px rgba(255,50,180,.2);
+
+  border-radius:26px;
+
+  border:
+    2px solid
+    rgba(255,164,225,.35);
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.4),
+    0 0 35px rgba(255,84,203,.14);
+
+  background:#26092f;
+
+  isolation:isolate;
 }
 
-.card-front{
+.memory-face:after{
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  z-index:2;
+
   background:
-    linear-gradient(135deg,rgba(123,29,109,.85),rgba(43,11,58,.9));
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+    linear-gradient(
+      to top,
+      rgba(22,3,30,.88),
+      rgba(22,3,30,.05) 58%,
+      rgba(255,255,255,.03)
+    );
+
+  pointer-events:none;
 }
 
-.image-placeholder{
-  width:82%;
-  height:175px;
-  border-radius:18px;
-  border:2px dashed #ff9bd9;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#ffbde5;
-  font-family:'Dancing Script',cursive;
-  font-size:1.8rem;
-  background:rgba(255,255,255,.04);
+/* EXACT CARD IMAGE ALIGNMENT */
+
+.memory-card-image{
+  position:absolute;
+
+  z-index:1;
+
+  top:0;
+  left:0;
+
+  width:100%;
+  height:100%;
+
+  object-fit:cover;
+  object-position:center;
+
+  display:block;
+
+  pointer-events:none;
 }
 
-.card-number{
-  margin-top:12px;
-  color:#fff;
-  font-size:.8rem;
-}
+.memory-content{
+  position:absolute;
 
-.card-back{
-  transform:rotateY(180deg);
-  background:linear-gradient(145deg,#fff0fa,#ffd3ec);
-  color:#52164e;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  z-index:3;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  padding:25px;
+
   text-align:center;
-  padding:30px;
+
+  text-shadow:
+    0 2px 12px #000;
 }
 
-.secret{
-  font-family:'Dancing Script',cursive;
-  font-size:1.8rem;
+.memory-content h3{
+  font-size:2rem;
+  margin-bottom:8px;
 }
 
-.arrow-controls{
+.memory-content p{
+  margin:0;
+  font-size:.88rem;
+}
+
+.memory-back{
+  transform:rotateY(180deg);
+
   display:flex;
-  gap:20px;
-  margin:16px 0 0;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:30px;
+
+  background:
+    radial-gradient(
+      circle at 50% 30%,
+      rgba(255,115,211,.24),
+      transparent 40%
+    ),
+    linear-gradient(
+      145deg,
+      #7b1d6d,
+      #2b0b3a
+    );
+}
+
+.memory-back .note{
+  position:relative;
+  z-index:3;
+
+  font-size:1.02rem;
+  line-height:1.75;
+  text-align:center;
+}
+
+.card-counter{
+  opacity:.85;
+  font-size:.9rem;
+}
+
+.arrow-row{
+  display:flex;
+  gap:12px;
+  justify-content:center;
 }
 
 .arrow{
-  width:52px;
-  height:45px;
-  border:0;
+  width:48px;
+  height:44px;
+
   border-radius:14px;
-  background:#7b1d6d;
-  color:white;
-  font-size:1.3rem;
-  box-shadow:0 5px 0 #351039;
+
+  border:
+    1px solid
+    rgba(255,255,255,.2);
+
+  background:
+    rgba(255,255,255,.1);
+
+  color:#fff;
   cursor:pointer;
+  font-size:1.3rem;
 }
 
-/* ---------- SLIDE 4 ---------- */
+/* =========================
+   SLIDE 4
+========================= */
+
+#slide4{
+  gap:18px;
+}
 
 .letter{
-  width:min(800px,94vw);
-  max-height:55vh;
-  overflow-y:auto;
-  padding:28px;
-  border-radius:28px;
-  background:rgba(30,4,40,.72);
-  border:1px solid rgba(255,137,215,.35);
+  width:min(950px,96vw);
+  height:62svh;
+
+  overflow:auto;
+
+  padding:32px;
+
+  white-space:pre-line;
+
+  font-size:1rem;
+  line-height:2;
+
   box-shadow:
-    inset 0 0 30px rgba(255,50,180,.08),
-    0 0 35px rgba(255,50,180,.2);
-  scrollbar-width:thin;
+    0 0 35px rgba(255,90,208,.18),
+    inset 0 0 25px rgba(255,90,208,.05);
 }
 
 .letter p{
-  color:#f5deec;
-  line-height:1.9;
-  font-size:.88rem;
-  margin-bottom:18px;
+  margin:0;
 }
 
-.letter .opening{
-  font-family:'Dancing Script',cursive;
-  font-size:2rem;
-  color:#ffacd9;
+/* =========================
+   SLIDE 5
+========================= */
+
+#slide5{
+  justify-content:flex-start;
+  gap:10px;
 }
 
-/* ---------- SLIDE 5 ---------- */
+.proposal-cloud{
+  width:min(920px,96vw);
 
-.proposal-box{
-  width:min(850px,94vw);
   padding:22px 25px;
-  border-radius:35px;
-  background:rgba(255,135,205,.13);
-  border:1px solid rgba(255,170,225,.35);
-  box-shadow:0 0 35px rgba(255,50,180,.2);
-  text-align:center;
-  position:relative;
-}
 
-.proposal-box:before{
-  content:"";
-  position:absolute;
-  inset:7px;
-  border:1px solid rgba(255,255,255,.12);
   border-radius:30px;
-  pointer-events:none;
-}
 
-.proposal-text{
-  font-family:'Dancing Script',cursive;
-  font-size:clamp(1.3rem,3vw,2rem);
-  color:#ffe2f3;
-  line-height:1.4;
-}
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,127,213,.93),
+      rgba(123,29,109,.9)
+    );
 
-/* cartoon couple */
-
-.couple{
-  position:relative;
-  width:350px;
-  height:270px;
-  margin:8px auto;
-}
-
-.person{
-  position:absolute;
-  bottom:10px;
-  width:105px;
-  height:220px;
-}
-
-.boy{left:35px}
-.girl{right:35px}
-
-.head{
-  position:absolute;
-  width:72px;
-  height:72px;
-  border-radius:50%;
-  background:#f0b58f;
-  left:17px;
-  top:5px;
-  border:3px solid #3a142e;
-}
-
-.hair{
-  position:absolute;
-  width:75px;
-  height:37px;
-  left:15px;
-  top:0;
-  background:#24152a;
-  border-radius:50% 50% 20% 20%;
-  z-index:2;
-}
-
-.eye-dot{
-  position:absolute;
-  width:6px;
-  height:7px;
-  border-radius:50%;
-  background:#24152a;
-  top:37px;
-  z-index:3;
-}
-
-.eye-dot.l{left:36px}
-.eye-dot.r{left:56px}
-
-.smile{
-  position:absolute;
-  width:20px;
-  height:10px;
-  border-bottom:3px solid #8c305b;
-  border-radius:50%;
-  left:27px;
-  top:50px;
-  z-index:3;
-}
-
-.body-shirt{
-  position:absolute;
-  width:82px;
-  height:105px;
-  left:11px;
-  top:72px;
-  background:#5d2470;
-  border-radius:35px 35px 15px 15px;
-}
-
-.arm{
-  position:absolute;
-  width:20px;
-  height:90px;
-  border-radius:20px;
-  background:#f0b58f;
-  top:80px;
-  z-index:1;
-}
-
-.boy .arm.left{
-  left:-2px;
-  transform:rotate(30deg);
-}
-
-.boy .arm.right{
-  right:-2px;
-  transform:rotate(-50deg);
-}
-
-.girl .arm.left{
-  left:-2px;
-  transform:rotate(45deg);
-}
-
-.girl .arm.right{
-  right:-2px;
-  transform:rotate(-20deg);
-}
-
-.leg{
-  position:absolute;
-  width:25px;
-  height:85px;
-  background:#24152f;
-  top:168px;
-  border-radius:20px;
-}
-
-.boy .leg.left{
-  left:18px;
-  transform:rotate(75deg);
-}
-
-.boy .leg.right{
-  left:52px;
-  transform:rotate(100deg);
-}
-
-.girl .leg.left{left:25px}
-.girl .leg.right{left:58px}
-
-.girl .body-shirt{
-  background:#d33a94;
-}
-
-.bouquet{
-  position:absolute;
-  left:98px;
-  top:135px;
-  width:60px;
-  height:50px;
-  z-index:5;
-}
-
-.flower{
-  position:absolute;
-  width:20px;
-  height:20px;
-  background:#ff7dc5;
-  border-radius:50%;
-}
-
-.flower:nth-child(1){left:15px;top:0}
-.flower:nth-child(2){left:0;top:18px}
-.flower:nth-child(3){left:30px;top:18px}
-.flower:nth-child(4){left:15px;top:28px}
-
-.flower:after{
-  content:"";
-  position:absolute;
-  width:8px;
-  height:8px;
-  background:#ffd45f;
-  border-radius:50%;
-  left:6px;
-  top:6px;
-}
-
-.bouquet-stem{
-  position:absolute;
-  width:4px;
-  height:45px;
-  background:#5b8c52;
-  left:29px;
-  top:20px;
-  transform:rotate(-10deg);
-}
-
-.ring{
-  position:absolute;
-  width:28px;
-  height:28px;
-  border:5px solid #ffd76a;
-  border-radius:50%;
-  left:90px;
-  top:104px;
-  z-index:8;
-  animation:ringGlow 1.4s ease-in-out infinite;
-}
-
-@keyframes ringGlow{
-  50%{
-    box-shadow:0 0 15px #ffd76a,0 0 30px #ff9ed8;
-  }
-}
-
-/* finale panda */
-
-.final-panda{
-  position:absolute;
-  right:-20px;
-  bottom:15px;
-  transform:scale(.48);
-  transform-origin:bottom center;
-  animation:pandaFloat 1.8s ease-in-out infinite;
-}
-
-/* ---------- FIREWORKS ---------- */
-
-#fireworks{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:100;
-  display:none;
-}
-
-#fireworks.show{
-  display:block;
-}
-
-/* ---------- SUCCESS ---------- */
-
-.success-message{
-  position:fixed;
-  left:50%;
-  top:50%;
-  transform:translate(-50%,-50%) scale(.5);
-  opacity:0;
-  pointer-events:none;
-  z-index:110;
-  font-family:'Dancing Script',cursive;
-  font-size:clamp(2.5rem,10vw,6rem);
-  text-align:center;
   color:#fff;
-  text-shadow:0 0 15px #fff,0 0 40px #ff36ae;
-  transition:.6s;
+
+  text-align:center;
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.35),
+    0 0 30px rgba(255,105,215,.35);
 }
 
-.success-message.show{
-  opacity:1;
-  transform:translate(-50%,-50%) scale(1);
+.proposal-cloud h2{
+  font-size:clamp(1.8rem,5vw,3rem);
 }
 
-/* ---------- RESPONSIVE ---------- */
+.characters{
+  width:min(900px,98vw);
 
-@media(max-width:600px){
+  flex:1;
+  min-height:310px;
+  max-height:54svh;
+
+  display:flex;
+
+  align-items:flex-end;
+  justify-content:center;
+
+  gap:clamp(5px,3vw,35px);
+
+  position:relative;
+}
+
+/*
+  These are ONLY image containers.
+  No CSS shapes are used to draw characters.
+*/
+
+.character{
+  position:relative;
+
+  display:flex;
+
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.character img{
+  display:block;
+
+  width:100%;
+  height:100%;
+
+  object-fit:contain;
+  object-position:center bottom;
+
+  filter:
+    drop-shadow(
+      0 16px 18px
+      rgba(0,0,0,.38)
+    );
+}
+
+.character-boy{
+  width:min(250px,30vw);
+  height:min(330px,42svh);
+}
+
+.character-girl{
+  width:min(220px,28vw);
+  height:min(330px,42svh);
+}
+
+.character-panda{
+  width:min(160px,22vw);
+  height:min(230px,32svh);
+}
+
+.final-controls{
+  position:relative;
+  z-index:50;
+
+  margin-top:auto;
+  padding-bottom:8px;
+}
+
+#noBtn{
+  position:relative;
+}
+
+/* =========================
+   FIREWORKS
+========================= */
+
+.firework{
+  position:fixed;
+
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  z-index:100;
+
+  pointer-events:none;
+
+  animation:
+    fireworkMove
+    1.1s
+    ease-out
+    forwards;
+}
+
+@keyframes fireworkMove{
+  0%{
+    transform:
+      translate(0,0)
+      scale(1);
+    opacity:1;
+  }
+
+  100%{
+    transform:
+      translate(var(--tx),var(--ty))
+      scale(.1);
+    opacity:0;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
   .slide{
-    padding:15px 12px;
+    padding:
+      14px
+      12px
+      18px;
   }
 
-  .title{
-    font-size:2.4rem;
+  h1{
+    font-size:clamp(2rem,10vw,3rem);
   }
 
-  .panda-area{
-    transform:scale(.9);
-    margin-top:-5px;
+  h2{
+    font-size:clamp(1.9rem,9vw,2.8rem);
   }
 
-  .thought{
-    font-size:.72rem;
-    min-height:65px;
+  .panda-wrap{
+    width:min(170px,48vw);
   }
 
-  .timeline-wrap,
-  .letter{
-    max-height:48vh;
-  }
-
-  .proposal-box{
+  .timeline{
+    max-height:55svh;
     padding:16px;
   }
 
-  .couple{
-    transform:scale(.75);
-    margin:-8px auto -15px;
+  .timeline-item{
+    padding:17px 18px;
   }
 
-  .final-panda{
-    right:-60px;
-    bottom:-20px;
-    transform:scale(.35);
+  .timeline-item h3{
+    font-size:1.4rem;
+  }
+
+  .album{
+    width:min(94vw,500px);
+    aspect-ratio:4/3;
+  }
+
+  .memory-content{
+    padding:18px;
+  }
+
+  .memory-content h3{
+    font-size:1.65rem;
+  }
+
+  .memory-back{
+    padding:22px;
+  }
+
+  .memory-back .note{
+    font-size:.9rem;
+    line-height:1.6;
+  }
+
+  .letter{
+    height:60svh;
+    padding:22px;
+    font-size:.9rem;
+    line-height:1.8;
+  }
+
+  .characters{
+    min-height:250px;
+    max-height:46svh;
+    gap:2px;
+  }
+
+  .character-boy{
+    width:39vw;
+    height:37svh;
+  }
+
+  .character-girl{
+    width:34vw;
+    height:37svh;
+  }
+
+  .character-panda{
+    width:25vw;
+    height:28svh;
+  }
+
+  .proposal-cloud{
+    padding:17px;
+  }
+
+  .proposal-cloud h2{
+    font-size:1.65rem;
   }
 
   .btn{
-    min-width:95px;
-    padding:11px 18px;
+    padding:10px 20px;
   }
 }
 
-@media(max-height:700px){
-  .panda-area{
-    transform:scale(.72);
-    margin-top:-25px;
-    margin-bottom:-30px;
+@media(max-height:650px){
+
+  .characters{
+    max-height:40svh;
   }
 
-  .title{
-    font-size:2.2rem;
+  .character-boy,
+  .character-girl{
+    height:32svh;
   }
 
-  .timeline-wrap,
-  .letter{
-    max-height:43vh;
-  }
-
-  .couple{
-    transform:scale(.62);
-    margin:-30px auto -45px;
+  .character-panda{
+    height:25svh;
   }
 }
 </style>
@@ -1051,127 +1075,326 @@ body{
 
 <body>
 
-<div id="stars"></div>
+<div id="sky"></div>
 
 <div id="app">
 
-<!-- ========================================================= -->
-<!-- SLIDE 1 -->
-<!-- ========================================================= -->
+  <!-- =========================
+       SLIDE 1
+  ========================== -->
 
-<section class="slide active" id="slide1">
+  <section class="slide active" id="slide1">
 
-  <h1 class="title">Just a small gift for my little princess bacchiiiiii</h1>
+    <h1>
+      Just a small gift for my little princess bacchiiiiii
+    </h1>
 
-  <div class="gift">
-    <div class="ribbon left"></div>
-    <div class="ribbon right"></div>
-    <div class="gift-lid"></div>
-    <div class="gift-box"></div>
-  </div>
+    <div class="gift" id="giftBox" aria-label="Gift box">
+      <div class="gift-lid"></div>
+      <div class="gift-box"></div>
+    </div>
 
-  <div class="panda-area">
-
-    <div class="thought" id="cloud1">
+    <div class="thought" id="pandaThought1">
       Hiii Trishala..!!! I am a small panda
     </div>
 
-    <div class="panda happy" id="panda1">
-      <div class="ear left"></div>
-      <div class="ear right"></div>
-
-      <div class="head">
-        <div class="eye-patch left"></div>
-        <div class="eye-patch right"></div>
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-        <div class="nose"></div>
-        <div class="mouth"></div>
-      </div>
-
-      <div class="body">
-        <div class="belly"></div>
-        <div class="arm left"></div>
-        <div class="arm right"></div>
-        <div class="leg left"></div>
-        <div class="leg right"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="buttons">
-    <button class="btn pink" id="openBtn">OPEN</button>
-    <button class="btn" id="closeBtn">CLOSE</button>
-  </div>
-
-</section>
-
-
-<!-- ========================================================= -->
-<!-- SLIDE 2 -->
-<!-- ========================================================= -->
-
-<section class="slide" id="slide2">
-
-  <h1 class="title">Hamaari Journey Ke Khas Moments</h1>
-
-  <div class="timeline-wrap">
-    <div class="timeline" id="timeline"></div>
-  </div>
-
-  <div class="roaming-panda">
-
-    <div class="thought" id="cloud2">
-      Hehehe... looking back at our cute memories!
+    <div class="panda-wrap">
+      <img
+        id="moodPanda"
+        class="panda-img"
+        src="https://media.giphy.com/media/1B1Ys19k1V3hOJbMH2/giphy.gif"
+        alt="Cute animated panda"
+      >
     </div>
 
-    <div class="panda shy walk" id="panda2">
-      <div class="ear left"></div>
-      <div class="ear right"></div>
+    <div class="btn-row">
 
-      <div class="head">
-        <div class="eye-patch left"></div>
-        <div class="eye-patch right"></div>
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-        <div class="nose"></div>
-        <div class="mouth"></div>
-      </div>
+      <button
+        class="btn pink"
+        id="openBtn"
+        type="button"
+      >
+        OPEN
+      </button>
 
-      <div class="body">
-        <div class="belly"></div>
-        <div class="arm left"></div>
-        <div class="arm right"></div>
-        <div class="leg left"></div>
-        <div class="leg right"></div>
-      </div>
+      <button
+        class="btn ghost"
+        id="closeBtn"
+        type="button"
+      >
+        CLOSE
+      </button>
+
     </div>
-  </div>
 
-  <div class="buttons">
-    <button class="btn" onclick="showSlide(1)">BACK</button>
-    <button class="btn pink" onclick="showSlide(3)">NEXT</button>
-  </div>
+  </section>
 
-</section>
+  <!-- =========================
+       SLIDE 2
+  ========================== -->
 
+  <section class="slide" id="slide2">
 
-<!-- ========================================================= -->
-<!-- SLIDE 3 -->
-<!-- ========================================================= -->
+    <h2>
+      Hamaari Journey Ke Khas Moments
+    </h2>
 
-<section class="slide" id="slide3">
+    <div class="panda-wrap">
 
-  <h1 class="title">Our Little Memory Album</h1>
+      <img
+        class="panda-img"
+        src="https://media.giphy.com/media/1B1Ys19k1V3hOJbMH2/giphy.gif"
+        alt="Cute animated panda"
+      >
 
-  <p class="subtitle">
-    Swipe or use the arrows to explore. Tap the card to reveal its secret.
-  </p>
+    </div>
 
-  <div class="memory-zone">
+    <div class="thought">
+      Hamaari story ke ye moments hamesha special rahenge.
+    </div>
 
-    <div class="memory-card" id="memoryCard">
-      <div class="card-inner">
+    <div
+      class="glass timeline"
+      id="timeline"
+    ></div>
 
-        <div class="card-face card-front">
- 
+    <div class="slide-nav btn-row">
+
+      <button
+        class="btn ghost"
+        data-back="1"
+        type="button"
+      >
+        Back
+      </button>
+
+      <button
+        class="btn pink"
+        data-next="3"
+        type="button"
+      >
+        Next
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       SLIDE 3
+  ========================== -->
+
+  <section class="slide" id="slide3">
+
+    <h2>
+      Secret Album
+    </h2>
+
+    <div class="panda-wrap">
+
+      <img
+        class="panda-img"
+        src="https://media.giphy.com/media/1B1Ys19k1V3hOJbMH2/giphy.gif"
+        alt="Cute animated panda"
+      >
+
+    </div>
+
+    <div class="thought">
+      Swipe left and right to see cute images, and tap the image to reveal a secret note.
+    </div>
+
+    <div
+      class="album"
+      id="album"
+      aria-label="Memory card"
+    >
+
+      <div
+        class="flip-card"
+        id="flipCard"
+      >
+
+        <div
+          class="memory-face"
+          id="memoryFront"
+        ></div>
+
+        <div
+          class="memory-face memory-back"
+          id="memoryBack"
+        ></div>
+
+      </div>
+
+    </div>
+
+    <div
+      class="card-counter"
+      id="cardCounter"
+    >
+      Memory 1 of 6
+    </div>
+
+    <div class="arrow-row">
+
+      <button
+        class="arrow"
+        id="prevCard"
+        type="button"
+        aria-label="Previous memory"
+      >
+        &#10094;
+      </button>
+
+      <button
+        class="arrow"
+        id="nextCard"
+        type="button"
+        aria-label="Next memory"
+      >
+        &#10095;
+      </button>
+
+    </div>
+
+    <div class="slide-nav btn-row">
+
+      <button
+        class="btn ghost"
+        data-back="2"
+        type="button"
+      >
+        Back
+      </button>
+
+      <button
+        class="btn pink"
+        data-next="4"
+        type="button"
+      >
+        Next
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       SLIDE 4
+  ========================== -->
+
+  <section class="slide" id="slide4">
+
+    <h2>
+      A Little Story From My Heart
+    </h2>
+
+    <div class="panda-wrap">
+
+      <img
+        class="panda-img"
+        src="https://media.giphy.com/media/1B1Ys19k1V3hOJbMH2/giphy.gif"
+        alt="Cute animated panda"
+      >
+
+    </div>
+
+    <div class="thought">
+      This is so beautiful... it's making my heart melt!
+    </div>
+
+    <div
+      class="glass letter"
+      id="letter"
+    ></div>
+
+    <div class="slide-nav btn-row">
+
+      <button
+        class="btn ghost"
+        data-back="3"
+        type="button"
+      >
+        Back
+      </button>
+
+      <button
+        class="btn pink"
+        data-next="5"
+        type="button"
+      >
+        Next
+      </button>
+
+    </div>
+
+  </section>
+
+  <!-- =========================
+       SLIDE 5
+  ========================== -->
+
+  <section class="slide" id="slide5">
+
+    <div class="proposal-cloud">
+
+      <h2>
+        My Little Princess
+      </h2>
+
+      <p>
+        My Little Princess, you are the best thing that ever happened to me.
+        I promise to love you, protect you, and make you smile every single day.
+        Will you do me the honor of being mine forever?
+      </p>
+
+    </div>
+
+    <div class="characters">
+
+      <div class="character character-boy">
+
+        <img
+          src="https://media.giphy.com/media/iDC5rKIlocC52v7kPi/giphy.gif"
+          alt="Boy proposing"
+        >
+
+      </div>
+
+      <div class="character character-girl">
+
+        <img
+          src="https://media.giphy.com/media/fdO2yCL7Eg00UXS7FC/giphy.gif"
+          alt="Happy girl"
+        >
+
+      </div>
+
+      <div class="character character-panda">
+
+        <img
+          src="https://media.giphy.com/media/1B1Ys19k1V3hOJbMH2/giphy.gif"
+          alt="Excited panda"
+        >
+
+      </div>
+
+    </div>
+
+    <div class="thought">
+      I challenge you! Can't touch NO!
+    </div>
+
+    <div class="btn-row final-controls">
+
+      <button
+        class="btn pink"
+        id="yesBtn"
+        type="button"
+      >
+        YES
+      </button>
+
+      <button
+        class="btn ghost
